@@ -105,7 +105,7 @@ Y comienza la primera lección. Claude te guiará a partir de aquí.
 
 ## El Proyecto
 
-Trabajarás en **PeopleOnBoard**, una app de fichaje digital para PYMES españolas. Tu rol es Product Designer en Louloudi Solutions, y tienes autonomía total sobre el diseño del producto.
+Trabajarás en **PeopleOnBoard**, una app de fichaje digital para PYMES españolas. Tu rol es Product Designer en una empresa ficticia llamada Louloudi Solutions, y tienes autonomía total sobre el diseño del producto.
 
 ### Carpetas
 
@@ -122,7 +122,7 @@ materiales/             → Templates y recursos reutilizables
 
 ## Ayuda
 
-Si te pierdes o tienes dudas durante el curso, pregúntale a Claude directamente — está ahí para ayudarte.
+Si te pierdes o tienes dudas durante el curso, pregúntale a Claude directamente en el terminal de Cursor (donde se ejecuta el curso) — está ahí para ayudarte.
 
 Si quieres retomar el curso donde lo dejaste, escribe `claude --continue` en el terminal.
 
