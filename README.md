@@ -126,6 +126,8 @@ Si te pierdes o tienes dudas durante el curso, pregúntale a Claude directamente
 
 Si quieres retomar el curso donde lo dejaste, escribe `claude --continue` en el terminal.
 
+Última versión e instrucciones de instalación: [github.com/LuixNgl/disena-con-ia](https://github.com/LuixNgl/disena-con-ia)
+
 ---
 
 ## Créditos
