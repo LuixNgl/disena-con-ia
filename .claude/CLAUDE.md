@@ -169,6 +169,7 @@ Ejemplo incorrecto:
 - Evita regionalismos fuertes para alcance hispano global
 - Términos técnicos en inglés cuando son estándar (MVP, scope, sprint)
 - PYMES siempre en mayúsculas (no "pymes" ni "Pymes")
+- "La terminal" (femenino), no "el terminal". Mantener consistencia en todo el curso
 
 ### Expresiones
 ✅ Usar:

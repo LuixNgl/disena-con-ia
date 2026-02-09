@@ -80,7 +80,7 @@ ACTION:
 
 Después, explicar cómo abrir esta carpeta en Cursor para usar el agente:
 
-> Para usar tu agente fuera del curso: abre Cursor, ve a **File** > **Open Folder** y selecciona la carpeta que acabamos de crear. Luego abre el terminal y escribe `claude`. Tu agente se cargará automáticamente.
+> Para usar tu agente fuera del curso: abre Cursor, ve a **File** > **Open Folder** y selecciona la carpeta que acabamos de crear. Luego abre la terminal y escribe `claude`. Tu agente se cargará automáticamente.
 
 ---
 

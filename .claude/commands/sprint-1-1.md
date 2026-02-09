@@ -146,7 +146,7 @@ No tienes que hacer todo el curso de una sentada. Puedes dejarlo y retomarlo cua
 **Si cierras Cursor** y quieres continuar otro día:
 1. Abre Cursor
 2. Abre esta carpeta del proyecto (File → Open Folder)
-3. Abre el terminal (`Cmd + J` (Mac) o `Ctrl + J` (Windows))
+3. Abre la terminal (`Cmd + J` (Mac) o `Ctrl + J` (Windows))
 4. Escribe `claude --continue` y pulsa Enter — retoma directamente donde lo dejaste, sin menú
 
 **Si dejas Cursor abierto** pero quieres parar:

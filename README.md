@@ -35,38 +35,37 @@ Aprende a sintetizar research, analizar competencia, crear briefings de diseño 
 
 Toda la instalación se hace en unos 15 minutos. Solo necesitas copiar y pegar unos comandos, no hace falta saber programar.
 
-> **Si ya tienes alguno de estos pasos completados** (Cursor instalado, cuenta de Claude activa, etc.), pasa directamente al siguiente paso.
+> **Si ya tienes alguno de estos pasos completados** (Cursor instalado, cuenta de Claude activa, etc.), ten en cuenta que no usaremos la app de Claude Desktop ni el chat de Cursor, sino el **terminal** de Cursor. Esto se explica en los pasos siguientes, así que mejor no saltarse ninguno y hacer la confirmación que se indica en cada paso.
 
 ### 1. Cuenta de Claude
 
 Necesitas una cuenta **Claude Pro** (o superior) en [claude.ai](https://claude.ai). El plan Pro cuesta unos 20€/mes e incluye acceso a Claude Code, que es lo que usaremos en el curso.
 
-### 2. Instalar Cursor
+**Recuerda:** No necesitas la app de Claude Desktop. Si la tienes instalada, no pasa nada, pero no la usaremos. El curso funciona desde la terminal de Cursor.
 
-1. Descarga Cursor desde [cursor.com](https://cursor.com)
-2. Instala siguiendo el asistente
-
-### 3. Descargar el curso
+### 2. Descargar el curso
 
 1. [**Descarga el curso (ZIP)**](https://github.com/LuixNgl/disena-con-ia/archive/refs/heads/main.zip)
 2. Descomprime en una carpeta local (por ejemplo, en tu escritorio)
 
-> **Importante:** Si más adelante mueves el curso a otra ubicación, mueve la **carpeta completa**. Contiene archivos ocultos necesarios para que funcione (la carpeta `.claude`). No arrastres archivos sueltos.
+> **Importante:** Si mueves el curso a otra ubicación, mueve la **carpeta completa**. Contiene archivos ocultos necesarios para que funcione (la carpeta `.claude`). No arrastres archivos sueltos.
 
-### 4. Abrir el proyecto
+### 3. Instalar Cursor y abrir el proyecto
 
-1. Abre Cursor
-2. **File** → **Open Folder** → Selecciona la carpeta del curso que acabas de descomprimir
+1. Descarga Cursor desde [cursor.com](https://cursor.com)
+2. Instala siguiendo el asistente
+3. Abre Cursor
+4. Usa el botón **Open Project** o en el menú **File** → **Open Folder** → Selecciona la carpeta del curso que acabas de descomprimir
 
 > En algunas versiones de Cursor verás **Open Project** en lugar de **Open Folder**.
 
-### 5. Instalar Claude Code
+### 4. Instalar Claude Code
 
-Abre el terminal en Cursor: menú **View** → **Terminal** (o con el atajo `Cmd + J` en Mac / `Ctrl + J` en Windows). Se abrirá un panel en la parte inferior.
+Abre la terminal en Cursor: menú **View** → **Terminal** (o con el atajo `Cmd + J` en Mac / `Ctrl + J` en Windows). Se abrirá un panel en la parte inferior.
 
-> **Importante:** Usaremos el **terminal** de Cursor durante todo el curso, no el chat de Cursor (panel derecho) ni la app de Claude Desktop. Si ya tienes Claude Desktop instalado, necesitas instalar Claude Code igualmente: son herramientas distintas. Claude Code funciona en el terminal, puede conectarse con herramientas externas como Figma, ejecutar comandos personalizados (como los `/sprint` del curso), y usa tu suscripción de Claude sin necesitar la de Cursor.
+> **Importante:** Usaremos el **terminal** de Cursor durante todo el curso, no el chat de Cursor (panel derecho). Claude Code funciona en la terminal, puede conectarse con herramientas externas como Figma, ejecutar comandos personalizados (como los `/sprint` del curso), y usa tu suscripción de Claude sin necesitar la de Cursor.
 
-Copia y pega este comando en el terminal y pulsa Enter:
+Copia y pega este comando en la terminal y pulsa Enter:
 
 **Mac / Linux:**
 ```
@@ -78,15 +77,23 @@ curl -fsSL https://claude.ai/install.sh | bash
 irm https://claude.ai/install.ps1 | iex
 ```
 
-**Si el comando anterior no funciona**, puedes instalar Claude Code con npm:
+**Si el comando anterior no funciona** (Mac, Linux y Windows), puedes instalar Claude Code con npm. Si no tienes npm instalado, primero instálalo desde el propio terminal de Cursor:
+
+*Mac / Linux:*
+```
+curl -fsSL https://nodejs.org/install.sh | bash
+```
+
+*Windows:* Descarga e instala Node.js desde [nodejs.org](https://nodejs.org) (la versión LTS). Después cierra y vuelve a abrir la terminal de Cursor.
+
+Con npm instalado, ejecuta:
 ```
 npm install -g @anthropic-ai/claude-code
 ```
-Si tampoco tienes npm, descárgalo primero desde [nodejs.org](https://nodejs.org) (la versión LTS).
 
-Espera a que termine la instalación. Después, cierra el terminal y ábrelo de nuevo (**View** → **Terminal**) para que reconozca el nuevo comando.
+Espera a que termine la instalación. Después, escribe `exit` en la terminal para cerrarlo y abre uno nuevo con **View** → **Terminal** para que reconozca el nuevo comando.
 
-Para verificar que se ha instalado correctamente, escribe en el terminal:
+Para verificar que se ha instalado correctamente, escribe en la terminal:
 
 ```
 claude --version
@@ -94,21 +101,23 @@ claude --version
 
 Si ves un número de versión, todo está bien.
 
-### 6. Conectar tu cuenta
+### 5. Conectar tu cuenta
 
-Escribe `claude` en el terminal y pulsa Enter. La primera vez te pedirá que conectes tu cuenta:
+Escribe `claude` en la terminal y pulsa Enter.
+
+La primera vez te pedirá que conectes tu cuenta:
+
+> Si no te pide que conectes tu cuenta y/o ves el mensaje **"credit balance too low"**, escribe `/login` en la terminal para conectar manualmente. Verifica que tu suscripción Claude Pro esté activa en [claude.ai/settings](https://claude.ai/settings).
 
 1. Selecciona **"Claude account with subscription"**
 2. Se abrirá una ventana del navegador para autenticarte — inicia sesión con tu cuenta de Claude
 3. Vuelve a Cursor — verás que Claude Code está listo
 
-Si te pregunta por preferencias de estilo de texto, elige la que prefieras (no afecta al curso).
+Si te pregunta por preferencias de estilo de texto, elige la que prefieras pero intenta que se vea muy bien (no afecta al curso).
 
-> **Si ves el mensaje "credit balance too low":** Escribe `/login` en el terminal para reconectar tu cuenta. Verifica que tu suscripción Claude Pro esté activa en [claude.ai/settings](https://claude.ai/settings).
+### 6. Empezar el curso
 
-### 7. Empezar el curso
-
-Ya está todo preparado. A partir de aquí, trabaja 100% desde el terminal de Cursor. Escribe:
+Ya está todo preparado. A partir de aquí, trabaja 100% desde la terminal de Cursor. Escribe:
 
 ```
 /sprint-1-1
@@ -137,9 +146,9 @@ materiales/             → Templates y recursos reutilizables
 
 ## Ayuda
 
-Si te pierdes o tienes dudas durante el curso, pregúntale a Claude directamente en el terminal de Cursor (donde se ejecuta el curso) — está ahí para ayudarte.
+Si te pierdes o tienes dudas durante el curso, pregúntale a Claude directamente en la terminal de Cursor (donde se ejecuta el curso) — está ahí para ayudarte.
 
-**Para retomar el curso donde lo dejaste**, escribe `claude --continue` en el terminal. Si necesitas elegir una conversación anterior concreta, escribe `claude` y luego `/resume`.
+**Para retomar el curso donde lo dejaste**, escribe `claude --continue` en la terminal. Si necesitas elegir una conversación anterior concreta, escribe `claude` y luego `/resume`.
 
 Última versión e instrucciones de instalación: [github.com/LuixNgl/disena-con-ia](https://github.com/LuixNgl/disena-con-ia)
 
