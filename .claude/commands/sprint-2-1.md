@@ -1,6 +1,6 @@
-# Sprint 2.1: De Prompt a Figma
+# Sprint 2.1: De prompt a Figma
 
-Bienvenido al Sprint 2 — la parte más visual del curso.
+Empezamos el Sprint 2, la parte más visual del curso.
 
 En el Sprint 1 construiste los cimientos: research, análisis de competencia y un briefing de diseño profesional. Ahora vamos a convertir todo eso en propuestas de diseño reales.
 
@@ -8,13 +8,15 @@ Al final de este sub-sprint puedes tener:
 - **4 propuestas de diseño** en HTML
 - Una de ellas **importada a Figma** como archivo editable
 
-STOP: ¿Preparado para ver tus ideas cobrar forma?
+Antes de empezar, un tip: escribe `/usage` para ver cuántos tokens te quedan en esta sesión. Así puedes controlar el uso a lo largo del Sprint 2, que es el más intensivo. Cuando hayas visto los datos de uso, pulsa `Esc` para volver aquí.
+
+STOP: ¿Vamos a ver tus ideas cobrar forma?
 
 USER: Sí / Vamos / Adelante
 
 ---
 
-## Tus 4 Propuestas de Diseño
+## Tus 4 propuestas de diseño
 
 Tienes el briefing en `outputs/prompt-diseno.md`. Vamos a usarlo para generar **4 propuestas de diseño en HTML**, cada una con un estilo visual diferente para que puedas elegir y definir mejor el estilo.
 
@@ -26,7 +28,7 @@ Aquí va el prompt:
 Lee outputs/prompt-diseno.md y genera 4 propuestas de diseño en HTML para la pantalla de fichaje de PeopleOnBoard. Cada propuesta debe tener un estilo visual diferente, cumplir todos los requisitos técnicos del prompt, y guardarse en PeopleOnBoard/outputs/html-propuestas/ como opcion-1.html, opcion-2.html, opcion-3.html y opcion-4.html
 ```
 
-**Aviso:** Esta acción puede tardar unos minutos — la IA está generando 4 propuestas completas con estilos distintos. Cursor te pedirá permiso para crear cada archivo. Selecciona **"Allow"** cuando te lo pida (o **"Allow All"** si prefieres agilizar).
+**Aviso:** Esta acción puede tardar unos minutos, la IA está generando 4 propuestas completas con estilos distintos. Cursor te pedirá permiso para crear cada archivo. Selecciona **"Allow"** cuando te lo pida (o **"Allow All"** si prefieres agilizar).
 
 STOP: Introduce el prompt o dime que lo ejecute.
 
@@ -38,7 +40,7 @@ ACTION: Lee `PeopleOnBoard/outputs/prompt-diseno.md` y genera 4 archivos HTML en
 - Cada archivo es una propuesta completa de la pantalla de fichaje de PeopleOnBoard
 - Cada una con un estilo visual claramente distinto (basados en la dirección artística del prompt pero con variaciones de personalidad)
 - Todas cumplen los requisitos técnicos del prompt: pixel perfect, base-8, light+dark mode, WCAG 2.1 AA, variables CSS tokenizadas, HTML semántico
-- Genera solo para el dispositivo indicado en el prompt del estudiante (mobile o desktop) — no ambos
+- Genera solo para el dispositivo indicado en el prompt del estudiante (mobile o desktop), no ambos
 - Los archivos deben ser HTML completo con CSS embebido, funcional al abrir en navegador
 - Nombres: opcion-1.html, opcion-2.html, opcion-3.html, opcion-4.html
 - Avisa al estudiante antes de crear cada archivo para que apruebe el permiso en Cursor
@@ -57,18 +59,18 @@ ACTION: Abre los 4 archivos HTML en el navegador usando bash open
 
 ---
 
-## Revisar y Elegir
+## Revisar y elegir
 
 Tómate un momento para mirar las 4 opciones. Fíjate en la estructura, los colores, la tipografía y cómo se presenta el flujo de fichaje. Si tu navegador tiene modo oscuro, también podrás comparar el dark mode.
 
-Cada propuesta es una interpretación diferente de tu briefing. Las 4 cumplen los mismos requisitos técnicos — la diferencia está en la personalidad visual.
+Cada propuesta es una interpretación diferente de tu briefing. Las 4 cumplen los mismos requisitos técnicos, la diferencia está en la personalidad visual.
 
 ¿Con cuál seguimos? Puedes:
 - **Elegir una** y avanzar (la ajustaremos en Figma)
 - **Combinar elementos** de varias (dime cuáles)
 - **Pedir un cambio concreto** antes de avanzar
 
-No hace falta que sea perfecta — los ajustes finos los harás en Figma, que es donde tu ojo de diseñador marca la diferencia.
+No hace falta que sea perfecta, los ajustes finos los harás en Figma, que es donde tu ojo de diseñador marca la diferencia. El objetivo es avanzar en el curso. En la práctica real, sí conviene refinar el HTML antes de Figma, pero aquí queremos agilizar.
 
 STOP: ¿Con cuál seguimos?
 
@@ -125,11 +127,11 @@ Sin problema, ahí se quedan.
 
 ---
 
-## Lo que Acabas de Conseguir
+## Lo que acabas de conseguir
 
 Piensa en lo que ha pasado: has definido un briefing de diseño, y la IA ha generado 4 propuestas visuales profesionales a partir de él. Esto ya es muy útil para validar la dirección del producto con tu equipo.
 
-Pero aquí va un matiz importante: hasta este punto, un PM con acceso a las mismas herramientas podría haber llegado al mismo resultado. **Tu valor como Product Designer se activa en el siguiente paso** — cuando lleves esto a Figma y hagas ajustes de diseño que solo un ojo entrenado puede hacer: espaciados, jerarquía visual, consistencia del sistema, refinar la experiencia.
+Pero aquí va un matiz importante: hasta este punto, un PM con acceso a las mismas herramientas podría haber llegado al mismo resultado. **Tu valor como Product Designer se activa en el siguiente paso.** Cuando lleves esto a Figma y hagas ajustes de diseño que solo un ojo entrenado puede hacer: espaciados, jerarquía visual, consistencia del sistema, refinar la experiencia.
 
 Por cierto: estos HTML también podrían ser interactivos, con transiciones y estados funcionales. Eso lo veremos más adelante.
 
@@ -143,7 +145,7 @@ USER: Sí / Vamos / Adelante
 
 ## De HTML a Figma
 
-Existen varias formas de trabajar con Figma usando IA — las repasaremos al final del Sprint 2. Vamos a empezar con **html.to.design**, un plugin que convierte HTML en diseños editables de Figma. Es rápido, preciso y permite unos 10 usos gratis al mes ¡perfecto para lo que necesitamos ahora!
+Existen varias formas de trabajar con Figma usando IA, las repasaremos al final del Sprint 2. Vamos a empezar con **html.to.design**, un plugin que convierte HTML en diseños editables de Figma. Es rápido, preciso y permite unos 10 usos gratis al mes ¡perfecto para lo que necesitamos ahora!
 
 Primer paso: crea un nuevo archivo de **Figma Design** (no FigJam) y ponle nombre **PeopleOnBoard**.
 
@@ -179,7 +181,7 @@ Ahora vamos a conectar la terminal de Cursor con el plugin html.to.design a trav
 
 ¿Por qué lo configuramos desde la terminal? Porque estamos trabajando en la terminal de Cursor, y configurar el MCP aquí nos permite enviar diseños a Figma sin cambiar de herramienta.
 
-**Nota:** También se puede configurar desde el chat de Cursor o desde la app de Claude Desktop (válida incluso con planes gratuitos) — son opciones igualmente válidas y sencillas. Otra opción es darle el código HTML directamente dentro del plugin en Figma, o usar su extensión de Chrome para convertir cualquier web.
+**Nota:** También se puede configurar desde el chat de Cursor o desde la app de Claude Desktop (válida incluso con planes gratuitos), son opciones igualmente válidas y sencillas. Otra opción es darle el código HTML directamente dentro del plugin en Figma, o usar su extensión de Chrome para convertir cualquier web.
 
 Vamos paso a paso. Primero, la configuración en el plugin:
 
@@ -187,7 +189,7 @@ Vamos paso a paso. Primero, la configuración en el plugin:
 2. Activa el toggle **Enable MCP endpoint**
 3. Aparecerá un enlace **"how to configure your AI tool?"** (puede aparecer en español según tu configuración) — haz clic
 4. Selecciona la pestaña **Other**
-5. Copia la URL del primer bloque — la del servidor remoto, con formato `https://h2d-mcp.divriots.com/.../mcp`
+5. Copia la URL del primer bloque, la del servidor remoto, con formato `https://h2d-mcp.divriots.com/.../mcp`
 
 STOP: ¿Tienes la URL copiada?
 
@@ -243,15 +245,16 @@ ACTION: Ayuda a resolver. Problemas comunes:
 
 ---
 
-## Configurar la Importación
+## Configurar la importación
 
 Antes de importar, vamos a activar unas opciones del plugin para que el resultado en Figma sea mucho más completo.
 
 En el plugin html.to.design (que ya tienes abierto en Figma), cierra el modal **"MCP Configuration"** que probablemente tienes abierto y busca el botón **"Import configuration"** en la pestaña MCP. Al pulsarlo se despliegan las opciones de importación.
 
-Activa estos 5 toggles:
+Activa estos toggles:
 
 **Options:**
+- [x] Use Autolayout (se activa por defecto con los siguientes)
 - [x] Create styles & variables
 - [x] Use existing local styles
 
@@ -262,7 +265,7 @@ Activa estos 5 toggles:
 - [x] Add hyperlinks
 - [x] HTML layer names
 
-Los demás puedes dejarlos como están.
+Los demás puedes dejarlos como están. Cuando estén activados, pulsa **Proceed** para confirmar y cerrar los ajustes. Puede que no te aparezca el botón **Proceed**, en ese caso cierra los ajustes de **"MCP Configuration"** directamente y asegúrate que estás en la pantalla principal del plugin.
 
 ¿Qué hacen?
 - **Create local styles & variables** crea variables y estilos de Figma a partir de los valores del CSS (colores, tipografía, espaciados)
@@ -284,7 +287,7 @@ ACTION: Ayuda al estudiante:
 
 ---
 
-## Elegir Modo de Color
+## Elegir modo de color
 
 Antes de importar, una decisión rápida.
 
@@ -308,7 +311,7 @@ ACTION: Modifica `PeopleOnBoard/outputs/html-propuestas/propuesta-final.html`: a
 
 ---
 
-## Importar tu Diseño a Figma
+## Importar tu diseño a Figma
 
 Ahora viene el momento clave. Cierra el menú **"Import configurations"** en el plugin y vamos a enviar tu diseño directamente a Figma.
 
@@ -317,13 +320,13 @@ Antes de continuar, verifica:
 - El plugin **html.to.design** está ejecutándose con el MCP activado
 - Has activado las opciones de **Import configuration** del paso anterior
 
-Aquí va el prompt:
+Aquí va el prompt para usar en esta conversación (me puedes pedir que lo ejecute directamente):
 
 ```
 Usa la herramienta import-html de html.to.design para enviar el diseño de PeopleOnBoard a Figma. Lee el archivo outputs/html-propuestas/propuesta-final.html y envía su contenido.
 ```
 
-Cursor te pedirá permiso para usar la herramienta MCP — selecciona **"Allow"**. La importación puede tardar unos minutos — buen momento para prepararte un café o una infusión.
+Cursor te pedirá permiso para usar la herramienta MCP — selecciona **"Allow"**. La importación puede tardar unos minutos, buen momento para prepararte un café o una infusión.
 
 STOP: Introduce el prompt o dime que lo ejecute.
 
@@ -354,21 +357,21 @@ ACTION: Diagnosticar:
 
 ---
 
-## Tu Diseño en Figma
+## Tu diseño en Figma
 
-Ahí lo tienes. Tu diseño de PeopleOnBoard — generado por IA, dirigido por ti — ahora es un archivo de Figma completamente editable.
+Ahí lo tienes. Tu diseño de PeopleOnBoard (generado por IA, dirigido por ti) ahora es un archivo de Figma completamente editable.
 
 Explora un poco:
 - **Panel de capas:** html.to.design ha traducido la estructura HTML en frames con **auto-layout** y capas con **nombres descriptivos** del HTML
 - **Variables locales** (Local Variables): encontrarás variables de color, tipografía y espaciado creadas automáticamente
-- **Componentes:** El plugin ha generado componentes con variantes — para los estados hover y también para los iconos
+- **Componentes:** El plugin ha generado componentes con variantes para los estados hover y también para los iconos
 
-También puede que notes algunas limitaciones — es normal con herramientas de importación:
-- Los **nombres de las variables** puede que sean genéricos (basados en los valores, no en su función) — en lugar de tokens semánticos
+También puede que notes algunas limitaciones, es normal con herramientas de importación:
+- Los **nombres de las variables** puede que sean genéricos (basados en los valores, no en su función), en lugar de tokens semánticos
 - Solo se ha importado **un modo de color** (el que elegiste). El otro modo está en el HTML si lo necesitas
-- Algunos valores de espaciado puede que no sean exactos — el plugin puede capturar valores computados del navegador
+- Algunos valores de espaciado puede que no sean exactos, el plugin puede capturar valores computados del navegador
 
-Puedes hacer cambios manuales si quieres — mover elementos, ajustar colores, reorganizar. Figma es tu terreno.
+Puedes hacer cambios manuales si quieres: mover elementos, ajustar colores, reorganizar. Figma es tu terreno.
 
 Pero antes de que te pongas a editar a mano, te adelanto algo: en el **Sprint 2.2** vas a aprender a hacer cambios de diseño en Figma de una forma que te va a sorprender. Merece la pena esperar.
 
@@ -378,7 +381,7 @@ USER: [Respuesta]
 
 ## [Si quiere explorar]
 
-Tómate tu tiempo. Cuando estés listo, seguimos con el cierre.
+Tómate tu tiempo. Cuando quieras, seguimos con el cierre.
 
 STOP: ¿Seguimos?
 
@@ -386,7 +389,7 @@ USER: Sí / Adelante
 
 ---
 
-## Cierre del Sprint 2.1
+## Cierre del sprint 2.1
 
 Has completado el primer sub-sprint de la fase de diseño.
 
@@ -406,7 +409,7 @@ Has completado el primer sub-sprint de la fase de diseño.
 | html.to.design | Convertir HTML en diseños editables de Figma |
 | MCP | Conectar herramientas de IA con aplicaciones externas |
 | Import configuration | Activar opciones del plugin para importar variables, estilos y componentes |
-| Variables en Figma | Variables de color, tipografía y espaciado importadas automáticamente (con naming genérico — el refinamiento viene después) |
+| Variables en Figma | Variables de color, tipografía y espaciado importadas automáticamente (con naming genérico, el refinamiento viene después) |
 
 **Filosofía reforzada:**
 - HTML para validar rápido, Figma para diseñar con precisión

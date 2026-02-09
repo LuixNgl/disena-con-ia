@@ -1,22 +1,22 @@
 # Diseña con IA
 
-Curso práctico y gratuito para **Product Designers** que quieren integrar inteligencia artificial en su flujo de trabajo. Sin experiencia técnica necesaria.
+Curso práctico y gratuito para **Product Designers** que quieren integrar inteligencia artificial en su flujo de trabajo. Creado para diseñadores, no hace falta saber programar.
 
 Aprende a sintetizar research, analizar competencia, crear briefings de diseño y generar propuestas visuales en Figma — todo dirigido por ti y ejecutado con IA.
 
 ---
 
-## Qué Aprenderás
+## Qué aprenderás
 
 | Sprint | Contenido | Duración |
 |--------|-----------|----------|
 | **1.1** | Bienvenida al proyecto | ~15 min |
-| **1.2** | Síntesis de entrevistas con IA | ~15 min |
+| **1.2** | Síntesis de entrevistas de usuario con IA | ~15 min |
 | **1.3** | Análisis de competencia desde la terminal | ~15 min |
 | **1.4** | Crear un briefing de diseño profesional | ~20 min |
 | **2.1** | Generar propuestas de diseño y llevarlas a Figma | ~30-40 min |
 | **2.2** | Conectar Claude con Figma en tiempo real | ~40-50 min |
-| **2.3** | Ecosistema de herramientas IA para diseño | ~25-30 min |
+| **2.3** | Ecosistema de herramientas IA para diseño | ~20 min |
 
 **Duración total:** ~3 horas
 
@@ -24,40 +24,47 @@ Aprende a sintetizar research, analizar competencia, crear briefings de diseño 
 
 ## Requisitos
 
-- **Cuenta Claude Pro** (o superior) — [claude.ai](https://claude.ai) ($20/mes)
+- **Cuenta Claude Pro** (o superior) — [claude.ai](https://claude.ai) (unos 20€/mes)
 - **Cursor** — [cursor.com](https://cursor.com) (gratuito)
 - **Figma** — [figma.com](https://figma.com) (cuenta gratuita o de pago)
+- **Espacio en disco:** Al menos 2 GB libres
 
 ---
 
 ## Instalación
 
-Toda la instalación se hace en unos 15 minutos. Solo necesitas copiar y pegar unos comandos — no hace falta saber programar.
+Toda la instalación se hace en unos 15 minutos. Solo necesitas copiar y pegar unos comandos, no hace falta saber programar.
+
+> **Si ya tienes alguno de estos pasos completados** (Cursor instalado, cuenta de Claude activa, etc.), pasa directamente al siguiente paso.
 
 ### 1. Cuenta de Claude
 
-Necesitas una cuenta **Claude Pro** (o superior) en [claude.ai](https://claude.ai). El plan Pro cuesta $20/mes e incluye acceso a Claude Code, que es lo que usaremos en el curso.
+Necesitas una cuenta **Claude Pro** (o superior) en [claude.ai](https://claude.ai). El plan Pro cuesta unos 20€/mes e incluye acceso a Claude Code, que es lo que usaremos en el curso.
 
 ### 2. Instalar Cursor
 
 1. Descarga Cursor desde [cursor.com](https://cursor.com)
 2. Instala siguiendo el asistente
 
-Cursor es un editor de código con IA integrada. Tiene un chat y un terminal — nosotros usaremos el **terminal**, que es la parte inferior de la pantalla. ¿Por qué el terminal y no el chat? Porque en el terminal funciona **Claude Code**, que puede conectarse con herramientas externas como Figma, ejecutar comandos personalizados (como los `/sprint` del curso), y funciona con tu suscripción de Claude sin necesitar la de Cursor.
+### 3. Descargar el curso
 
-### 3. Descargar el Curso
-
-1. Descarga el archivo ZIP del curso desde este repositorio (botón **Code** → **Download ZIP**)
+1. [**Descarga el curso (ZIP)**](https://github.com/LuixNgl/disena-con-ia/archive/refs/heads/main.zip)
 2. Descomprime en una carpeta local (por ejemplo, en tu escritorio)
 
-### 4. Abrir el Proyecto
+> **Importante:** Si más adelante mueves el curso a otra ubicación, mueve la **carpeta completa**. Contiene archivos ocultos necesarios para que funcione (la carpeta `.claude`). No arrastres archivos sueltos.
+
+### 4. Abrir el proyecto
 
 1. Abre Cursor
 2. **File** → **Open Folder** → Selecciona la carpeta del curso que acabas de descomprimir
 
+> En algunas versiones de Cursor verás **Open Project** en lugar de **Open Folder**.
+
 ### 5. Instalar Claude Code
 
-Abre el terminal en Cursor: menú **View** → **Terminal** (o con el atajo `Cmd + J` en Mac / `Ctrl + J` en Windows). Verás que se abre un panel en la parte inferior.
+Abre el terminal en Cursor: menú **View** → **Terminal** (o con el atajo `Cmd + J` en Mac / `Ctrl + J` en Windows). Se abrirá un panel en la parte inferior.
+
+> **Importante:** Usaremos el **terminal** de Cursor durante todo el curso, no el chat de Cursor (panel derecho) ni la app de Claude Desktop. Si ya tienes Claude Desktop instalado, necesitas instalar Claude Code igualmente: son herramientas distintas. Claude Code funciona en el terminal, puede conectarse con herramientas externas como Figma, ejecutar comandos personalizados (como los `/sprint` del curso), y usa tu suscripción de Claude sin necesitar la de Cursor.
 
 Copia y pega este comando en el terminal y pulsa Enter:
 
@@ -71,6 +78,12 @@ curl -fsSL https://claude.ai/install.sh | bash
 irm https://claude.ai/install.ps1 | iex
 ```
 
+**Si el comando anterior no funciona**, puedes instalar Claude Code con npm:
+```
+npm install -g @anthropic-ai/claude-code
+```
+Si tampoco tienes npm, descárgalo primero desde [nodejs.org](https://nodejs.org) (la versión LTS).
+
 Espera a que termine la instalación. Después, cierra el terminal y ábrelo de nuevo (**View** → **Terminal**) para que reconozca el nuevo comando.
 
 Para verificar que se ha instalado correctamente, escribe en el terminal:
@@ -81,7 +94,7 @@ claude --version
 
 Si ves un número de versión, todo está bien.
 
-### 6. Conectar tu Cuenta
+### 6. Conectar tu cuenta
 
 Escribe `claude` en el terminal y pulsa Enter. La primera vez te pedirá que conectes tu cuenta:
 
@@ -91,9 +104,11 @@ Escribe `claude` en el terminal y pulsa Enter. La primera vez te pedirá que con
 
 Si te pregunta por preferencias de estilo de texto, elige la que prefieras (no afecta al curso).
 
-### 7. Empezar el Curso
+> **Si ves el mensaje "credit balance too low":** Escribe `/login` en el terminal para reconectar tu cuenta. Verifica que tu suscripción Claude Pro esté activa en [claude.ai/settings](https://claude.ai/settings).
 
-Ya está todo listo. En el terminal de Cursor, escribe:
+### 7. Empezar el curso
+
+Ya está todo preparado. A partir de aquí, trabaja 100% desde el terminal de Cursor. Escribe:
 
 ```
 /sprint-1-1
@@ -103,7 +118,7 @@ Y comienza la primera lección. Claude te guiará a partir de aquí.
 
 ---
 
-## El Proyecto
+## El proyecto
 
 Trabajarás en **PeopleOnBoard**, una app de fichaje digital para PYMES españolas. Tu rol es Product Designer en una empresa ficticia llamada Louloudi Solutions, y tienes autonomía total sobre el diseño del producto.
 
@@ -124,7 +139,7 @@ materiales/             → Templates y recursos reutilizables
 
 Si te pierdes o tienes dudas durante el curso, pregúntale a Claude directamente en el terminal de Cursor (donde se ejecuta el curso) — está ahí para ayudarte.
 
-Si quieres retomar el curso donde lo dejaste, escribe `claude --continue` en el terminal.
+**Para retomar el curso donde lo dejaste**, escribe `claude --continue` en el terminal. Si necesitas elegir una conversación anterior concreta, escribe `claude` y luego `/resume`.
 
 Última versión e instrucciones de instalación: [github.com/LuixNgl/disena-con-ia](https://github.com/LuixNgl/disena-con-ia)
 

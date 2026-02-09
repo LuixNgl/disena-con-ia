@@ -12,8 +12,9 @@ Creado por **Xúlio Zé** (adaptación para Claude) a partir del proyecto origin
 
 ## Requisitos
 
-- **Figma Desktop** (no funciona desde el navegador)
-- **Bun** instalado
+- **Figma Desktop** (no funciona desde la versión web de Figma)
+- **Bun** (se instala en el proceso, ocupa ~200 MB)
+- **Espacio en disco:** ~500 MB libres (Bun + plugin + dependencias)
 - **Claude Code**, **Claude Desktop** o cualquier herramienta compatible con MCP
 
 ---
@@ -28,7 +29,7 @@ Creado por **Xúlio Zé** (adaptación para Claude) a partir del proyecto origin
 curl -fsSL https://bun.sh/install | bash
 ```
 
-Cierra y vuelve a abrir la terminal para que reconozca el comando.
+Si la terminal no reconoce `bun` después de instalarlo, usa la ruta completa: `~/.bun/bin/bun`. Este problema es habitual con herramientas recién instaladas.
 
 **2. Clonar el repositorio:**
 
@@ -148,7 +149,9 @@ Sustituye `TU_USUARIO` por tu nombre de usuario. Si ya tienes otros servidores M
 
 ## Cada nueva sesión (3 pasos)
 
-Cada vez que quieras usar Claude con Figma, necesitas tres cosas:
+Cada vez que quieras usar Claude con Figma, necesitas estos tres pasos. El MCP ya está configurado de la instalación, eso no hay que repetirlo.
+
+> **Importante:** El servidor socket se cierra cada vez que sales de Claude Code (`/exit`) o cierras la terminal. Es normal, hay que arrancarlo de nuevo cuando vuelvas.
 
 ### 1. Arrancar el servidor socket
 
@@ -160,12 +163,17 @@ cd ~/claude-talk-to-figma-mcp && bun socket
 
 (En Windows: usa la ruta correspondiente)
 
+Si `bun` no se reconoce, usa la ruta completa: `~/.bun/bin/bun socket` (macOS) o `%USERPROFILE%\.bun\bin\bun.exe socket` (Windows).
+
 Deja esta terminal abierta mientras trabajas.
 
 ### 2. Abrir el plugin en Figma
 
 1. Abre tu archivo en Figma Desktop
-2. Menú: **Plugins** → **Development** → **Claude MCP Plugin** → **Run**
+2. Menú: clic derecho en el canvas → **Plugins** → **Claude MCP Plugin**
+
+> **Nota:** Solo la primera vez necesitas importar el plugin desde el manifest.json. Las siguientes veces aparece directamente en el menú de plugins como cualquier otro plugin.
+
 3. Pulsa **"Connect"** en el panel del plugin
 4. Aparecerá un **código de canal** (ej: `v4f3uiqq`)
 
@@ -207,19 +215,46 @@ El plugin está en desarrollo activo. Estas capacidades se amplían con cada ver
 
 ## Solución de problemas
 
+### Error "bun: command not found"
+
+Este es el error más frecuente. Ocurre cuando la terminal no reconoce Bun después de instalarlo.
+
+**Solución rápida:** Usa la ruta completa en vez del nombre corto:
+- macOS: `~/.bun/bin/bun` en vez de `bun`
+- Windows: `%USERPROFILE%\.bun\bin\bun.exe` en vez de `bun`
+
+**Para resolverlo de forma permanente:**
+- macOS: ejecuta `exec $SHELL` para recargar la terminal
+- Windows: cierra y vuelve a abrir la terminal o PowerShell
+- Si nada funciona, cierra Cursor completamente y ábrelo de nuevo
+
+### La ruta del servidor MCP no funciona
+
+Si el comando `claude mcp add` da error o el MCP no conecta, puede ser un problema de ruta. Prueba con la ruta completa al archivo del servidor:
+
+```bash
+claude mcp add --transport stdio ClaudeTalkToFigma -- ~/.bun/bin/bun ~/claude-talk-to-figma-mcp/dist/talk_to_figma_mcp/server.js
+```
+
+En Windows:
+```powershell
+claude mcp add --transport stdio ClaudeTalkToFigma -- %USERPROFILE%\.bun\bin\bun.exe %USERPROFILE%\claude-talk-to-figma-mcp\dist\talk_to_figma_mcp\server.js
+```
+
+> **Nota:** Si la ruta `dist/talk_to_figma_mcp/server.js` no existe, prueba con `src/claude_mcp_server/index.ts`. La ruta varía según la versión del plugin.
+
 ### El servidor socket no arranca
 
-- Verifica que Bun está instalado: `bun --version`
+- Verifica que Bun está instalado: `bun --version` (o `~/.bun/bin/bun --version`)
 - Verifica que el puerto 3055 está libre:
   - macOS: `lsof -i :3055`
   - Windows: `netstat -aon | findstr :3055`
 - Si el puerto está ocupado, cierra el proceso que lo usa
-- Intenta con la ruta completa de Bun: `~/.bun/bin/bun socket`
 
 ### El plugin de Figma no conecta
 
 - Verifica que el servidor socket está corriendo (terminal abierta con `bun socket`)
-- Verifica que usas Figma Desktop, no la versión web
+- Verifica que usas **Figma Desktop**, no la versión web
 - Cierra y vuelve a abrir el plugin en Figma
 - Reinicia el servidor socket
 
@@ -240,11 +275,6 @@ El plugin está en desarrollo activo. Estas capacidades se amplían con cada ver
 - Verifica con `claude mcp list`
 - Si no aparece, vuelve a ejecutar el comando `claude mcp add`
 - Verifica que Bun está accesible desde la terminal
-
-### Error "bun: command not found"
-
-- macOS: ejecuta `exec $SHELL` para recargar la terminal, o usa la ruta completa `~/.bun/bin/bun`
-- Windows: reinicia la terminal o PowerShell
 
 ---
 

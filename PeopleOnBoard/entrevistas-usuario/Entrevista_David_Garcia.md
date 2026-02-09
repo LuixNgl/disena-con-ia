@@ -42,4 +42,4 @@ R: Cuántos días de vacaciones me quedan. Ahora mismo tengo que calcularlo yo o
 R: Un poco. No quiero que la empresa pueda modificar mis horas sin que yo lo sepa. Si un día se me olvida fichar, quiero poder entrar al día siguiente y corregirlo yo mismo, dejando constancia de que fui yo quien lo cambió. Me da más seguridad eso: que quede un registro de "David editó esto" a que de repente mi hora de entrada cambie mágicamente porque alguien en RRHH la tocó. Es una cuestión de confianza.
 
 **P: ¿Móvil o Web?**
-R: Móvil para fichar rápido o consultar días. Web si tengo que mirar mi nómina o hacer algo más detallado. Pero el fichaje diario, 100% móvil.
+R: Yo lo primero que hago al llegar es abrir el portátil, así que lo natural es fichar desde el navegador. No tenemos móvil de empresa, así que lo más práctico es desktop. Si algún día quiero consultar mis vacaciones desde el móvil personal, bien, pero el fichaje del día a día lo haría desde el ordenador sin duda.

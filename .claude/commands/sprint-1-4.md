@@ -1,4 +1,4 @@
-# Sprint 1.4: Prompt de Diseño
+# Sprint 1.4: Prompt de diseño
 
 ¡Bienvenido al último sub-sprint del Sprint 1!
 
@@ -6,13 +6,13 @@ Este sprint es especial: vamos a repasar lo aprendido hasta ahora y crear el **r
 
 Este sprint dura unos **20 minutos** y al final tendrás el briefing de diseño más completo que hayas creado.
 
-STOP: ¿Preparado para cerrar el Sprint 1?
+STOP: ¿Cerramos el Sprint 1?
 
 USER: Sí / Vamos / Adelante
 
 ---
 
-## Revisar lo que Tenemos
+## Revisar lo que tenemos
 
 Antes de crear el prompt, repasemos los inputs que hemos generado en los sprints anteriores. Pídeme que lea los archivos y te resuma los insights clave:
 
@@ -30,15 +30,15 @@ ACTION: Lee los archivos `PeopleOnBoard/outputs/sintesis-entrevistas.md` y `Peop
 
 ---
 
-## Revisar la Template del Prompt
+## Revisar la template del prompt
 
 Antes de que tomes decisiones, ¿quieres ver la template que usaremos para el prompt de diseño?
 
 Está en `materiales/Template_Prompt_Diseno.md`. Puedes abrirla desde el explorador lateral o pedirme que la abra.
 
-Hay algo que quizá quieras ajustar: la template tiene **Inter** como tipografía por defecto. Si prefieres dejarlo abierto para elegir otra fuente (del sistema o de Google Fonts, que son las que puede usar html.to.design), podemos modificarlo ahora.
+Hay algo que quizá quieras ajustar: la template tiene **Inter** como tipografía por defecto. Podemos cambiarla por un campo abierto para que elijas otra fuente más adelante.
 
-STOP: ¿Abro la template para revisarla?
+STOP: ¿Abro la template para revisarla y la ajustamos?
 
 USER: Sí / Ábrela / No, continuemos
 
@@ -96,11 +96,11 @@ ACTION: Modifica la template como se describe arriba (cambiar Inter por placehol
 
 ## [Si sigue sin querer modificar]
 
-Sin problema. Cuando generemos el prompt final, la tipografía que elijas en las siguientes preguntas se aplicará igualmente — no quedará limitada a Inter.
+Sin problema. Cuando generemos el prompt final, la tipografía que elijas en las siguientes preguntas se aplicará igualmente, no quedará limitada a Inter.
 
 ---
 
-## Definir Preferencias de Diseño
+## Definir preferencias de diseño
 
 Ahora necesito que tomes algunas decisiones de diseño. Vamos a usar de nuevo **AskUserQuestion** — la función que te muestra opciones para elegir.
 
@@ -189,7 +189,7 @@ Guarda el resultado en `PeopleOnBoard/outputs/prompt-diseno.md`
 
 ---
 
-## El Prompt de Diseño
+## El prompt de diseño
 
 ¡Archivo creado!
 
@@ -228,7 +228,7 @@ Perfecto, lo tienes guardado en `outputs/prompt-diseno.md` para cuando lo necesi
 
 ---
 
-## Cierre del Sprint 1
+## Cierre del sprint 1
 
 ¡Enhorabuena! Has completado el Sprint 1 y estás aumentando tus superpoderes como Product Designer.
 
@@ -266,12 +266,12 @@ USER: Sí / Continuamos / Adelante
 
 ---
 
-## Próximos Pasos: Sprint 2
+## Próximos pasos: Sprint 2
 
 En el Sprint 2 usaremos este prompt para generar propuestas visuales reales.
 
 Así funcionará:
-1. **Sprint 2.1:** Generaremos **4 opciones de HTML** con estilos diferentes
+1. Generaremos **4 opciones de HTML** con estilos diferentes
 2. Cada opción será una interpretación distinta del brief
 3. Podrás elegir una, mezclar elementos de varias, o iterar
 4. El HTML cumplirá requisitos técnicos específicos:
@@ -280,17 +280,17 @@ Así funcionará:
    - **Base-8** — Sistema de espaciado consistente
    - **Light + Dark mode** — Ambos modos desde el inicio
    - **Accesibilidad** — WCAG 2.1 AA + EN 301 549
-   - **Variables CSS tokenizadas** — Preparado para Design System
+   - **Variables CSS tokenizadas** — Preparado para escalar
 
 5. Usaremos **html.to.design** para convertir el HTML elegido a Figma
-6. Configuraremos el plugin para que importe con **variables y estilos de Figma** — colores, espaciados, tipografía
-7. El plugin importará con **auto-layout y variables ya aplicados** — los componentes del Design System completo los crearemos después
+6. Configuraremos el plugin para que importe con **variables y estilos de Figma**: colores, espaciados, tipografía
+7. El plugin importará con **auto-layout y variables ya aplicados**
 
 ---
 
 Tómate un descanso si lo necesitas. Cuando estés listo, el Sprint 2 te espera con la parte más visual del curso.
 
-**Recordatorio:** Si cierras Cursor, para retomar escribe `claude --continue` en la terminal — retoma donde lo dejaste. También puedes escribir `claude` y luego `/sprint-2-1` para ir directamente al Sprint 2.
+**Recordatorio:** Si cierras Cursor, para retomar donde lo dejaste escribe `claude --continue` en la terminal. También puedes escribir `claude` y luego `/sprint-2-1` para ir directamente al Sprint 2.
 
 STOP: Escribe `/sprint-2-1` para empezar el Sprint 2: Diseño.
 
@@ -327,8 +327,7 @@ USER: /sprint-2-1
 ### Sobre html.to.design y componentes
 - Con la configuración recomendada (que se activa en Sprint 2.1), el plugin importa: auto-layout, variables y estilos locales, nombres de capa del HTML, componentes hover, y hyperlinks
 - Lo que NO importa: un Design System completo (componentes maestros, variantes más allá de hover, documentación)
-- Los componentes del Design System se pueden crear después como siguiente paso
-- Si el usuario pregunta por esto, explícalo sin entrar en demasiado detalle
+- Si el usuario pregunta por Design System, explica que es un paso posterior al MVP
 
 ### Sobre el cierre
 - Este es un buen momento para recomendar un descanso
@@ -342,5 +341,5 @@ USER: /sprint-2-1
 - [ ] Estudiante eligió preferencias de diseño (vista, dispositivo, estilo, tipografía, colores, referencias)
 - [ ] Se ha creado `outputs/prompt-diseno.md` con el brief completo
 - [ ] Estudiante entiende los próximos pasos (4 HTMLs → html.to.design → Figma)
-- [ ] Estudiante sabe que el plugin importa auto-layout y variables, pero el Design System completo se crea después
+- [ ] Estudiante sabe que el plugin importa auto-layout y variables
 - [ ] Estudiante sabe cómo retomar el curso si cierra Cursor

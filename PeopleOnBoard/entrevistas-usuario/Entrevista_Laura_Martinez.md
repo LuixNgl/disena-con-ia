@@ -46,5 +46,8 @@ R: Ver el "Quién es quién" hoy. Un tablero rápido: Fulano estar, Mengano est�
 **P: ¿Hay alguna otra tarea que te consuma mucho tiempo y te gustaría delegar?**
 R: El onboarding de los nuevos. Cada vez que entra alguien, pierdo horas explicándole la empresa, dónde está la documentación, cómo pedir material... Me encantaría que la herramienta tuviera un módulo de "Bienvenida" donde el empleado pudiera auto-gestionarse eso, leer los docs de cultura y producto por su cuenta. Sé que quizá es pedir mucho ahora, pero me salvaría la vida.
 
+**P: ¿Desde dónde lo usarías?**
+R: Desde el portátil, seguro. Es lo primero que abro por la mañana. No tenemos móvil de empresa, así que lo lógico es que funcione bien en el navegador. Para aprobar algo rápido desde el móvil personal estaría bien, pero el uso principal sería desde el ordenador.
+
 **P: ¿Qué te frustraría de una nueva herramienta?**
 R: Que sea lenta o burocrática. Si para aprobar un día libre tengo que hacer 5 clics y rellenar un formulario, volveré al email. Tiene que ser: Notificación -> Abrir -> Aprobar. Listo.

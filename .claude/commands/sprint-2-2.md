@@ -75,7 +75,7 @@ ACTION: Diagnosticar:
 
 ---
 
-### Paso 2: Descargar el Plugin
+### Paso 2: Descargar el plugin
 
 Vamos a descargar tu propio plugin de Figma. Es más sencillo de lo que parece — unos pocos comandos y ya lo tendrás.
 
@@ -115,7 +115,7 @@ ACTION: Diagnosticar:
 
 ---
 
-### Paso 3: Instalar y Construir
+### Paso 3: Instalar y construir
 
 Ahora instalamos las dependencias del plugin y lo preparamos:
 
@@ -151,7 +151,7 @@ ACTION: Diagnosticar:
 
 ---
 
-### Paso 4: Importar el Plugin en Figma
+### Paso 4: Importar el plugin en Figma
 
 Ahora viene la parte de Figma. Este plugin no está en la tienda de Figma — por eso lo hemos descargado. Importarlo es sencillo:
 
@@ -278,7 +278,7 @@ USER: [channel ID]
 
 ---
 
-### Paso 8: Establecer Conexión
+### Paso 8: Establecer conexión
 
 ACTION: Usa la herramienta `join_channel` del MCP ClaudeTalkToFigma con el channel ID que proporcionó el estudiante. Confirma la conexión exitosa.
 
@@ -308,7 +308,7 @@ ACTION: Diagnosticar:
 
 ---
 
-## Tu Primera Prueba
+## Tu primera prueba
 
 Vamos a hacer algo rápido para que veas cómo funciona. Voy a usar la función `get_document_info`
 
@@ -332,9 +332,9 @@ Pregunta: ¿Qué quieres que cambie en tu diseño?
 [El estudiante puede elegir una opción o escribir su propia petición]
 
 ACTION: Ejecuta el cambio solicitado usando las herramientas del MCP (set_fill_color, set_text_content, resize, etc. según corresponda).
-Si el elemento tiene un degradado (gradient) y el estudiante pide cambiar su color, avisarle antes: "Ese elemento tiene un degradado. El plugin no puede manejar gradientes — al cambiar el color, lo reemplazará por un color plano. ¿Quieres que siga adelante o prefieres probar con otro elemento?"
+Si el elemento tiene un degradado (gradient) y el estudiante pide cambiar su color, avisarle antes: "Ese elemento tiene un degradado. El plugin no puede manejar gradientes: al cambiar el color, lo reemplazará por un color plano. ¿Quieres que siga adelante o prefieres probar con otro elemento?"
 
-Mira tu archivo de Figma — lo que acabas de ver es un agente de IA modificando tu diseño en tiempo real.
+Mira tu archivo de Figma: acabas de ver una agente de IA modificando tu diseño en tiempo real.
 
 STOP: ¿Lo ves reflejado en Figma?
 
@@ -355,7 +355,7 @@ Esto es un buen momento para hablar de las limitaciones. Ese cambio en concreto 
 
 ---
 
-## Qué Puede y Qué No Puede Hacer
+## Qué puede y qué no puede hacer
 
 Aquí tienes una referencia rápida de las capacidades actuales del plugin:
 
@@ -375,7 +375,7 @@ El plugin está en desarrollo activo. Estas capacidades se amplían con cada ver
 
 Y recuerda: para diseños completos desde cero, el enfoque HTML del Sprint 2.1 sigue siendo más eficiente. Este plugin es ideal para iterar y refinar.
 
-**Un recurso extra:** El autor del plugin comparte un prompt para que Claude actúe como especialista UX/UI al trabajar con Figma. Es un buen punto de partida — puedes usarlo tal cual o adaptarlo añadiendo el contexto de tu producto, usuarios y objetivos. Lo tienes aquí: [prompt-ux-ui-especialista-es.md](https://github.com/arinspunk/claude-talk-to-figma-mcp/blob/main/prompts/prompt-ux-ui-especialista-es.md)
+**Un recurso extra:** El autor del plugin comparte un prompt para que Claude actúe como especialista UX/UI al trabajar con Figma. Es un buen punto de partida. Puedes usarlo tal cual o adaptarlo añadiendo el contexto de tu producto, usuarios y objetivos. Lo tienes aquí: [prompt-ux-ui-especialista-es.md](https://github.com/arinspunk/claude-talk-to-figma-mcp/blob/main/prompts/prompt-ux-ui-especialista-es.md)
 
 Si quieres guardar alguno de estos recursos o comandos para consultarlos después, dime "anótalo en mis apuntes".
 
@@ -385,11 +385,11 @@ USER: Sí / Claro / Entendido / Alguna duda
 
 ---
 
-## Cómo Usar Fuera del Curso
+## Cómo usar fuera del curso
 
 Ahora que ya tienes todo configurado, quiero asegurarme de que puedes usar esto por tu cuenta cuando quieras.
 
-### Reiniciar para Futuras Sesiones
+### Reiniciar para futuras sesiones
 
 Cada vez que quieras usar Claude con Figma, necesitas tres cosas:
 
@@ -397,7 +397,7 @@ Cada vez que quieras usar Claude con Figma, necesitas tres cosas:
 2. **El plugin abierto en Figma** → Plugins → Development → Claude MCP Plugin → Connect
 3. **Conectar Claude al canal** → Copia el código del plugin y dile a Claude: `Talk to Figma, channel {tu-código}`
 
-El MCP ya está configurado — eso no hay que repetirlo.
+El MCP ya está configurado, eso no hay que repetirlo.
 
 Y recuerda: el plugin tiene que estar abierto en Figma durante toda la sesión. Si se cierra o el canal cambia, comparte el nuevo canal.
 
@@ -407,9 +407,9 @@ USER: Sí / Claro / Entendido
 
 ---
 
-### Desde la Terminal del Sistema
+### Desde la terminal del sistema
 
-Si quieres usar esta funcionalidad fuera de Cursor, puedes hacerlo directamente desde la terminal de tu sistema operativo — **Terminal** en macOS o **PowerShell** en Windows:
+Si quieres usar esta funcionalidad fuera de Cursor, puedes hacerlo directamente desde la terminal de tu sistema operativo: **Terminal** en macOS o **PowerShell** en Windows:
 
 1. En una pestaña: `cd [RUTA_ELEGIDA] && bun socket`
 2. En otra pestaña: escribe `claude` para abrir Claude Code
@@ -417,7 +417,7 @@ Si quieres usar esta funcionalidad fuera de Cursor, puedes hacerlo directamente 
 
 ---
 
-### Desde Claude Desktop
+### Desde Claude Desktop (opcional)
 
 Si tienes la app **Claude Desktop** instalada, también puedes usar esta funcionalidad desde allí. Es otra forma válida y cómoda.
 
@@ -460,7 +460,7 @@ USER: No / Todo claro / Continuamos
 
 ## Cierre
 
-### Reconocimiento al Autor
+### Reconocimiento al autor
 
 Este plugin es obra de **Xúlio Zé**, un desarrollador gallego que adaptó el proyecto original de **Sonny Lazuardi** para que funcione con Claude. Es open source, gratuito, y puedes seguir su evolución en [github.com/arinspunk/claude-talk-to-figma-mcp](https://github.com/arinspunk/claude-talk-to-figma-mcp).
 
@@ -468,13 +468,13 @@ Este plugin es obra de **Xúlio Zé**, un desarrollador gallego que adaptó el p
 
 ### Compartir en LinkedIn
 
-Si te está resultando útil el curso, quizá puedes compartir lo que estás haciendo en LinkedIn. No olvides mencionar al autor, te lo agradecerá mucho, [Luis Nagel](https://www.linkedin.com/in/luisnagel/). Recuerda que este curso es gratuito, compartiendo le llegará a más gente y destacará tu perfil.
+Si te está resultando útil el curso, quizá puedes grabar lo que estás haciendo y compartirlo en LinkedIn. No olvides mencionar al autor, te lo agradecerá mucho, [Luis Nagel](https://www.linkedin.com/in/luisnagel/). Recuerda que este curso es gratuito, compartiendo le llegará a más gente y destacará tu perfil.
 
 ---
 
-### Siguiente Sprint
+### Siguiente sprint
 
-En el siguiente sprint cerraremos el curso haciendo un repaso por encima de otras opciones para trabajar con IA. Si hay suficiente demanda, el curso podría ampliarse con sprints dedicados a otras funcionalidades.
+En el siguiente sprint cerraremos el curso haciendo un repaso por encima de otras opciones para trabajar con IA e incluye un bonus final de regalo. Si hay suficiente demanda, el curso podría ampliarse con sprints dedicados a otras funcionalidades.
 
 ---
 

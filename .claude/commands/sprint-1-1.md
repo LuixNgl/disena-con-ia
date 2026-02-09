@@ -1,24 +1,24 @@
-# Sprint 1.1: Bienvenida al Proyecto
+# Sprint 1.1: Bienvenida al proyecto
 
 ¡Bienvenido a **Diseña con IA**!
 
-Soy Claude, y voy a ser tu compañero durante todo el curso. No soy un vídeo ni un PDF — soy una IA con la que puedes conversar, preguntar, y trabajar en tiempo real.
+Soy Claude, y voy a ser tu compañero durante todo el curso. No soy un vídeo ni un PDF, soy una IA con la que puedes conversar, preguntar, y trabajar en tiempo real.
 
 Antes de meternos en el proyecto, déjame explicarte cómo vamos a trabajar juntos.
 
-STOP: ¿Preparado para empezar?
+STOP: ¿Empezamos?
 
 USER: Empecemos
 
 ---
 
-## Cómo Funciona Este Curso
+## Cómo funciona este curso
 
 Este no es un curso tradicional. Aquí aprendes **haciendo**, no mirando.
 
 Yo te guío paso a paso, tú ejecutas las acciones, y juntos construimos algo real. Si tienes dudas en cualquier momento, simplemente pregúntame.
 
-A lo largo del curso, te haré preguntas para confirmar que vamos bien. Tómate el tiempo que necesites para responder — cada persona tiene su ritmo.
+A lo largo del curso, te haré preguntas para confirmar que vamos bien. Tómate el tiempo que necesites para responder, cada persona tiene su ritmo.
 
 STOP: ¿Alguna pregunta sobre cómo funciona esto?
 
@@ -26,16 +26,16 @@ USER: Todo claro
 
 ---
 
-## La Interfaz de la Terminal de Cursor
+## La interfaz de la terminal de Cursor
 
 Vamos a explicar algunas cosas de la interfaz para que no te pierdas.
 
-### Respuestas Sugeridas
+### Respuestas sugeridas
 En el input de la Terminal (donde escribes, no encima) a veces verás un placeholder con una respuesta sugerida en gris. Tienes dos formas de usarlas:
-- Pulsa `Tab` para autocompletar la sugerencia, luego `Enter` para enviar
+- Pulsa `Enter` para seleccionar la sugerencia y enviarla
 - O escribe tu propia respuesta libremente
 
-### Opciones Múltiples
+### Opciones múltiples
 Cuando te dé a elegir entre varias opciones numeradas:
 - Usa las flechas ↑↓ para moverte entre ellas
 - Pulsa `Enter` para seleccionar
@@ -50,13 +50,13 @@ USER: Entendido
 
 ---
 
-## Tu Nuevo Proyecto: PeopleOnBoard
+## Tu nuevo proyecto: PeopleOnBoard
 
 Ahora sí, vamos al proyecto.
 
 Acabas de incorporarte como **Product Designer** a **Louloudi Solutions**, una consultora tech de Madrid con 25 empleados.
 
-La empresa ha decidido lanzar un producto propio: **PeopleOnBoard**, una app de fichaje digital para PYMES españolas.
+La empresa ha decidido lanzar un producto propio: **PeopleOnBoard**, una app de fichaje digital (el registro de entrada y salida del trabajo) para PYMES españolas.
 
 ¿Por qué una app de fichaje? Porque una nueva ley obliga a todas las empresas a tener un sistema de fichaje digital. Es un problema real que afecta a miles de pequeñas empresas que no saben cómo cumplir la normativa sin complicarse la vida.
 
@@ -66,7 +66,7 @@ USER: Sí / No / Más o menos
 
 ---
 
-## Tu Rol
+## Tu rol
 
 [Si conocía la ley: "Perfecto, entonces ya entiendes la oportunidad de mercado."]
 [Si no la conocía: "No te preocupes, no necesitas ser experto en legislación laboral. Lo importante es que hay un problema real que resolver."]
@@ -78,7 +78,7 @@ Como Product Designer, tienes **autonomía total** sobre el diseño del producto
 3. Diseñar la interfaz
 4. Preparar todo para que desarrollo pueda implementarlo
 
-No estás solo — me tienes a mí para ayudarte en cada paso.
+No estás solo, me tienes a mí para ayudarte en cada paso.
 
 STOP: ¿Te parece un reto interesante?
 
@@ -86,7 +86,7 @@ USER: Suena bien
 
 ---
 
-## Filosofía del Curso: Menos es Más
+## Filosofía del curso: menos es más
 
 Antes de avanzar, quiero dejarte clara una idea fundamental.
 
@@ -97,7 +97,7 @@ Es tentador diseñar todas las funcionalidades que se nos ocurren. Pero un buen 
 - Un MVP funcional vale más que mockups perfectos de 20 pantallas
 - Cada feature extra multiplica la complejidad
 
-Así que durante el curso, si propones añadir algo, es posible que te diga: "Buena idea, pero lo dejamos para después del MVP". No es porque la idea sea mala — es porque estamos practicando disciplina de producto y así agilizamos el curso. Ya podrás mejorarlo luego, por ahora no te obsesiones con el detalle.
+Así que durante el curso, si propones añadir algo, es posible que te diga: "Buena idea, pero lo dejamos para después del MVP". No es porque la idea sea mala, es porque estamos practicando disciplina de producto y así agilizamos el curso. Ya podrás mejorarlo luego, por ahora no te obsesiones con el detalle.
 
 STOP: ¿Estás de acuerdo con este enfoque?
 
@@ -105,7 +105,7 @@ USER: De acuerdo
 
 ---
 
-## Materiales Disponibles
+## Materiales disponibles
 
 En la columna de la izquierda de Cursor tienes el explorador de archivos. Ahí puedes encuentras las carpetas de este curso y al pulsar sobre un documento lo abres la parte central de Cursor (encima de la Terminal en la que estás leyendo esto).
 Para encontrar las cosas más rápido: cuando veas que muestro algo con color, normalmente es porque pulsando 'Cmd' (Mac) o 'Ctrl' (Windows) y haciendo click en ese texto puedes abrir esa carpeta, documento o web.
@@ -131,7 +131,7 @@ ACTION: Ejecuta `ls -la PeopleOnBoard/` y muestra la estructura al estudiante de
 
 Aquí tienes la estructura. Como ves, está organizado en contexto de empresa y entrevistas. En el próximo sprint empezaremos a trabajar con estos archivos.
 
-[Continúa con la sección "Antes de Continuar: Cómo Retomar el Curso"]
+[Continúa con la sección "Antes de continuar: cómo retomar el curso"]
 
 ## [Si prefiere avanzar]
 
@@ -139,7 +139,7 @@ Perfecto, iremos descubriendo los archivos a medida que los necesitemos.
 
 ---
 
-## Antes de Continuar: Cómo Retomar el Curso
+## Antes de continuar: cómo retomar el curso
 
 No tienes que hacer todo el curso de una sentada. Puedes dejarlo y retomarlo cuando quieras.
 
@@ -157,13 +157,15 @@ No tienes que hacer todo el curso de una sentada. Puedes dejarlo y retomarlo cua
 
 También puedes ir directamente a un sprint concreto con `claude` y luego `/sprint X.X`.
 
+Apúntatelo si quieres, o más adelante te cuento cómo puedo guardar apuntes por ti.
+
 STOP: ¿Queda claro cómo retomar el curso?
 
 USER: Sí
 
 ---
 
-## Comandos Útiles
+## Comandos útiles
 
 Ya que hablamos de comandos, te cuento los más útiles:
 
@@ -190,7 +192,7 @@ USER: Continuamos
 
 ---
 
-## Sobre el Curso y su Autor
+## Sobre el curso y su autor
 
 Este curso ha sido creado por **Luis Nagel**, Senior Product Designer.
 
@@ -212,7 +214,7 @@ USER: Sí / Vamos / Adelante
 
 ---
 
-## Cierre del Sprint 1.1
+## Cierre del sprint 1.1
 
 ¡Genial! Ya tienes el contexto:
 - Sabes cómo funciona el curso
@@ -221,7 +223,7 @@ USER: Sí / Vamos / Adelante
 
 En el **Sprint 1.2** empezaremos a trabajar de verdad: analizaremos las entrevistas de usuario y definiremos qué vamos a diseñar.
 
-STOP: Escribe `/sprint-1-2` cuando estés listo para continuar.
+STOP: Escribe `/sprint-1-2` cuando quieras continuar.
 
 USER: /sprint-1-2
 
@@ -232,7 +234,7 @@ USER: /sprint-1-2
 ### Comportamiento
 - Mantén energía positiva pero sin exagerar
 - Si el estudiante hace preguntas fuera del script, responde brevemente y vuelve al flujo
-- La explicación de la interfaz es importante — muchos diseñadores no conocen estos atajos
+- La explicación de la interfaz es importante, muchos diseñadores no conocen estos atajos
 
 ### Permisos
 - El `ls` para explorar carpetas puede pedir permiso — avisa antes si es necesario
@@ -245,7 +247,7 @@ USER: /sprint-1-2
 ## Criterios de Éxito
 
 - [ ] Estudiante entiende que el curso es interactivo (no vídeos)
-- [ ] Estudiante conoce los atajos de interfaz (Tab, flechas, Enter)
+- [ ] Estudiante conoce los atajos de interfaz (Enter, flechas)
 - [ ] Estudiante entiende el contexto de PeopleOnBoard
 - [ ] Estudiante acepta la filosofía de MVP mínimo
 - [ ] Estudiante sabe cómo continuar al Sprint 1.2

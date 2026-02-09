@@ -1,8 +1,8 @@
-# Sprint 1.3: Análisis de Competencia
+# Sprint 1.3: Análisis de competencia
 
 Ahora que entendemos a nuestros usuarios, vamos a ver qué ofrece el mercado.
 
-No diseñamos en el vacío — necesitamos saber contra quién competimos y dónde están las oportunidades.
+No diseñamos en el vacío, necesitamos saber contra quién competimos y dónde están las oportunidades.
 
 Este sprint dura unos **15 minutos** y al final tendrás un análisis comparativo del mercado.
 
@@ -12,9 +12,9 @@ USER: Sí / Adelante / Continuamos
 
 ---
 
-## Identificar la Competencia
+## Identificar la competencia
 
-Yo podría buscar desde cero cuáles son los principales competidores de PeopleOnBoard en España — analizar el mercado, filtrar por relevancia y proponerte una selección. Eso es algo que la IA hace muy bien.
+Yo podría buscar desde cero cuáles son los principales competidores de PeopleOnBoard en España: analizar el mercado, filtrar por relevancia y proponerte una selección. Eso es algo que la IA hace muy bien.
 
 Pero para agilizar, tu equipo ya ha identificado a los dos jugadores principales en HR software para PYMES:
 
@@ -37,15 +37,15 @@ No te preocupes, vamos a analizarlos juntos.
 
 ---
 
-## La Template de Análisis
+## La template de análisis
 
 En la carpeta `materiales/` tienes una template para análisis de competencia. Por cierto, todas las templates de esa carpeta son reutilizables — guárdalas para tus propios proyectos fuera de este curso.
 
 ### Sub-agentes
 
-Cuando me pides analizar dos webs, Claude Code puede lanzar **sub-agentes** — asistentes especializados que trabajan en paralelo en una misma tarea o serie de tareas. Mientras uno analiza Factorial, otro analiza Sesame al mismo tiempo. Esto ahorra tiempo y optimiza recursos.
+Para ver la competencia necesito acceder a sus webs. Cuando analizo varias webs a la vez, Claude Code puede lanzar **sub-agentes** — asistentes especializados que trabajan en paralelo en una misma tarea o serie de tareas. Mientras uno analiza Factorial, otro analiza Sesame al mismo tiempo. Esto ahorra tiempo y optimiza recursos.
 
-Los sub-agentes funcionan bien para tareas independientes e identicas en el proceso. Cuando las tareas comparten contexto o datos vinculados entre sí, se usa un **agente principal** — como el definido en el archivo `CLAUDE.md` de este curso, que mantiene la coherencia de todo. Si quieres profundizar en cómo funcionan los agentes y sub-agentes, el curso de Carl Vellotti entra en mucho más detalle.
+Los sub-agentes funcionan bien para tareas independientes e identicas en el proceso. Cuando las tareas comparten contexto o datos vinculados entre sí, se usa un **agente principal**, como el definido en el archivo `CLAUDE.md` de este curso, que mantiene la coherencia de todo. Si quieres profundizar en cómo funcionan los agentes y sub-agentes, el curso de Carl Vellotti entra en mucho más detalle.
 
 ### Permisos de acceso web
 
@@ -71,29 +71,17 @@ ACTION: Analiza en paralelo las webs de factorial.es y sesamehr.es usando el tem
 
 ¡Archivo creado! Ya tienes tu análisis de competencia en `outputs/analisis-competencia.md`.
 
-Fíjate en lo que acabas de hacer: has analizado dos productos de la competencia, extraído información de sus webs y generado un documento comparativo estructurado — con un solo prompt.
+Fíjate en lo que acabas de hacer con un solo prompt: has analizado dos productos de la competencia, extraído información de sus webs y generado un documento comparativo estructurado.
 
-Ábrelo con `@` como aprendiste en el sprint anterior para verlo con formato:
+Ábrelo desde el explorador de la izquierda: `PeopleOnBoard/outputs/analisis-competencia.md`. Recuerda: clic derecho en la pestaña → **Open Preview** para verlo renderizado.
 
-```
-Abre @analisis-competencia.md
-```
+STOP: Abre el archivo y revísalo. Cuando termines, vuelve a la terminal para continuar.
 
-STOP: Abre el archivo para revisarlo.
-
-USER: Abre @analisis-competencia.md
+USER: Listo / Ya lo he visto / Hecho
 
 ---
 
-ACTION: Abre el archivo `PeopleOnBoard/outputs/analisis-competencia.md` en el editor
-
-[Recordar al estudiante que puede usar Cmd/Ctrl + Shift + V para la preview de Markdown]
-
-Recuerda: clic derecho en la pestaña → **Open Preview** para verlo renderizado.
-
----
-
-## Completar con Datos de PeopleOnBoard
+## Completar con datos de PeopleOnBoard
 
 Para completar la matriz necesitamos los datos de PeopleOnBoard. Aquí voy a usar una funcionalidad llamada **AskUserQuestion** — me permite hacerte preguntas con opciones predefinidas.
 
@@ -131,13 +119,13 @@ ACTION: Actualiza `PeopleOnBoard/outputs/analisis-competencia.md` con los datos 
 
 ---
 
-## Oportunidades Identificadas
+## Oportunidades identificadas
 
 Mirando la comparativa, hay algunas oportunidades claras para PeopleOnBoard:
 
 1. **Simplicidad radical** — Factorial es muy completo pero puede abrumar. Sesame es simple pero básico. Hay espacio para "simple pero bonito".
 
-2. **Mobile-first de verdad** — Ambos tienen apps móviles, pero la experiencia principal sigue siendo desktop. PeopleOnBoard puede diseñarse mobile-first desde el inicio.
+2. **Buena experiencia móvil** — La competencia tiene apps móviles pero con experiencia mejorable. PeopleOnBoard puede diferenciarse ofreciendo una experiencia móvil realmente cuidada como complemento al uso principal en desktop.
 
 3. **Precio/valor** — Las gestorías laborales como canal de distribución pueden permitir precios más competitivos.
 
@@ -149,7 +137,7 @@ USER: No / Todo claro / Continuemos
 
 ---
 
-## Cierre del Sprint 1.3
+## Cierre del sprint 1.3
 
 Ya conoces el terreno de juego.
 
@@ -164,7 +152,7 @@ Ya conoces el terreno de juego.
 
 En el **Sprint 1.4** vamos a crear el prompt de diseño — el brief que usaremos para generar las primeras propuestas visuales de PeopleOnBoard.
 
-STOP: Escribe `/sprint-1-4` cuando estés listo.
+STOP: Escribe `/sprint-1-4` cuando quieras.
 
 USER: /sprint-1-4
 
@@ -189,7 +177,7 @@ USER: /sprint-1-4
 - Posicionamiento: "Fichaje digital simple para PYMES españolas"
 - Target principal: PYMES 10-50 empleados
 - Canal: Gestorías laborales
-- Diferencial: Simplicidad + experiencia mobile-first
+- Diferencial: Simplicidad + buena experiencia en todos los dispositivos
 - Los colores y estilo dependen de la respuesta del usuario
 
 ## Criterios de Éxito
