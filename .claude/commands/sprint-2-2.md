@@ -6,7 +6,7 @@ Este es un sprint clave en el que veremos una herramienta poco conocida y con mu
 
 Lo que vas a conseguir: que yo (Claude Code) pueda hacer cambios en tu archivo de Figma en tiempo real, mientras hablamos.
 
-Antes de empezar, quiero matizar las expectativas: el plugin que vamos a usar es un proyecto open source en desarrollo. Tiene limitaciones, pero lo que puede hacer ya es muy útil — y sobre todo, te va a abrir la cabeza a lo que viene.
+Antes de empezar, quiero matizar las expectativas: el plugin que vamos a usar es un proyecto open source en desarrollo. Tiene limitaciones, pero lo que puede hacer ya es muy útil y, sobre todo, te va a abrir la cabeza a lo que viene.
 
 ¿Cuándo usar esto vs el enfoque HTML del sprint anterior? Para crear diseños completos desde cero, el flujo HTML sigue siendo más ágil. Este plugin brilla cuando ya tienes un diseño y quieres iterar sobre él sin salir de la conversación.
 
@@ -82,10 +82,15 @@ Vamos a descargar tu propio plugin de Figma. Es más sencillo de lo que parece �
 ACTION: Usa AskUserQuestion para preguntar:
 
 Pregunta: ¿Dónde quieres guardar el plugin?
-- En tu carpeta de inicio (~/) (Recomendado — fácil de encontrar después)
+- En tu carpeta de inicio (~/) (Recomendado)
 - Dentro de la carpeta del proyecto
 
 [Según la respuesta, usar esa ubicación para la ruta. Si elige inicio: `~/claude-talk-to-figma-mcp`. Si elige proyecto: usar la ruta del proyecto + `/claude-talk-to-figma-mcp`]
+
+[**Importante — verificar la ruta elegida:**
+- Si la ruta contiene **espacios** (ej: `Mobile Documents`, `My Documents`), avisar al estudiante: "Esa ruta tiene espacios, lo que puede causar problemas con el plugin. Te recomiendo usar la carpeta de inicio (`~/`) para evitar complicaciones."
+- Si la ruta está dentro de **iCloud Drive** (macOS: `~/Library/Mobile Documents/com~apple~CloudDocs/...`), avisar: "Esa carpeta está sincronizada con iCloud. macOS puede eliminar los archivos locales para ahorrar espacio, lo que haría que el plugin deje de funcionar. Mejor guardarla en la carpeta de inicio (`~/`)."
+- La carpeta de inicio (`~/`) evita ambos problemas y es la opción más fiable.]
 
 Aquí va el comando para descargarlo:
 
@@ -181,19 +186,23 @@ ACTION: Diagnosticar:
 
 Igual que configuramos html.to.design en el sprint anterior, ahora añadimos este servidor MCP.
 
-ACTION: Genera el comando `claude mcp add` con la ruta absoluta correcta según el SO y la ubicación elegida por el estudiante. El formato es:
+ACTION: Antes de generar el comando, detectar la ruta absoluta de Bun ejecutando `which bun` (macOS/Linux) o `where bun` (Windows) en bash. Guardar esta ruta (ej: `/Users/usuario/.bun/bin/bun`) para usarla en el comando MCP. No usar `bun` a secas: el proceso MCP no siempre tiene acceso al mismo PATH que la terminal del usuario.
+
+ACTION: Genera el comando `claude mcp add` con la ruta absoluta de Bun y la ruta al servidor compilado. El formato es:
 
 [macOS/Linux]
 ```
-claude mcp add --transport stdio ClaudeTalkToFigma -- bun --cwd [RUTA_ABSOLUTA] run src/claude_mcp_server/index.ts
+claude mcp add --transport stdio ClaudeTalkToFigma -- [RUTA_ABSOLUTA_BUN] --cwd [RUTA_ABSOLUTA_PLUGIN] run dist/talk_to_figma_mcp/server.js
 ```
 
 [Windows]
 ```
-claude mcp add --transport stdio ClaudeTalkToFigma -- bun --cwd [RUTA_ABSOLUTA] run src/claude_mcp_server/index.ts
+claude mcp add --transport stdio ClaudeTalkToFigma -- [RUTA_ABSOLUTA_BUN] --cwd [RUTA_ABSOLUTA_PLUGIN] run dist/talk_to_figma_mcp/server.js
 ```
 
-Muestra el comando exacto al estudiante con la ruta correcta.
+**Importante:** Usamos `dist/` (el código compilado) en vez de `src/` (el fuente TypeScript). Es más estable porque no depende de que TypeScript se resuelva en tiempo de ejecución.
+
+Muestra el comando exacto al estudiante con ambas rutas ya resueltas.
 
 ---
 
@@ -222,33 +231,13 @@ ACTION: Diagnosticar:
 
 ---
 
-### Paso 6: Verificar MCP
+### Paso 6: Arrancar el servidor y verificar
 
-Escribe `/mcp` para verificar que está configurado.
-
-Deberías ver **ClaudeTalkToFigma** con un check verde y estado "connected".
-
-Después de revisarlo, pulsa `Esc` para volver al chat y confirmar que lo has visto.
-
-STOP: ¿Lo ves con check verde?
-
-USER: Sí / Lo veo / [Problema]
-
-## [Si el MCP no aparece o no está verde]
-
-ACTION: Diagnosticar:
-- No aparece en la lista → El comando `claude mcp add` no se ejecutó. Repetir Paso 5
-- Aparece pero en rojo → Verificar que Bun está instalado, la ruta es correcta, ejecutar `claude mcp list` para más detalles
-- Error de conexión → Verificar ruta al index.ts, ejecutar `bun --cwd [RUTA] run src/claude_mcp_server/index.ts` en terminal para ver errores
-
----
-
-### Paso 7: Conectar con Figma
-
-Ahora vamos a establecer la conexión entre Claude y tu archivo de Figma.
+Antes de verificar que todo está bien, necesito arrancar el servidor que conecta Claude con Figma.
 
 ACTION: Arranca el servidor socket en background usando Bash con run_in_background: true.
 Ejecutar: `cd [RUTA_ELEGIDA] && bun socket`
+Si `bun` no se encuentra, usar la ruta absoluta detectada en el Paso 5 (ej: `~/.bun/bin/bun socket`).
 Verificar con: `curl -s http://localhost:3055/status` (o similar endpoint de health check)
 
 Si el servidor arranca correctamente, informar al estudiante:
@@ -263,6 +252,27 @@ ACTION: Diagnosticar:
 - Error de dependencias → Volver al Paso 3 y reinstalar
 
 ---
+
+Ahora vamos a verificar que la configuración MCP funciona. Escribe `/mcp` en el chat.
+
+Deberías ver **ClaudeTalkToFigma** con un check verde y estado "connected".
+
+Después de revisarlo, pulsa `Esc` para volver al chat y confirmar que lo has visto.
+
+STOP: ¿Lo ves con check verde?
+
+USER: Sí / Lo veo / [Problema]
+
+## [Si el MCP no aparece o no está verde]
+
+ACTION: Diagnosticar:
+- No aparece en la lista → El comando `claude mcp add` no se ejecutó. Repetir Paso 5
+- Aparece pero en rojo → Verificar que la ruta absoluta de Bun es correcta (ejecutar `which bun`), que la ruta al plugin es correcta, ejecutar `claude mcp list` para más detalles
+- Error de conexión → Verificar ruta al server.js compilado, ejecutar `[RUTA_BUN] --cwd [RUTA_PLUGIN] run dist/talk_to_figma_mcp/server.js` en terminal para ver errores
+
+---
+
+### Paso 7: Conectar con Figma
 
 Ahora abre tu archivo **PeopleOnBoard** en Figma (el que creaste en el Sprint 2.1).
 
@@ -426,14 +436,14 @@ Necesitas una configuración previa (solo la primera vez):
 1. Abre Claude Desktop → **Settings** → **Developer** → **Edit Config**
 2. Añade esta configuración (yo te la genero con tu ruta):
 
-ACTION: Genera el JSON de configuración MCP adaptado a la ruta del estudiante. Usar la ruta absoluta correcta según SO:
+ACTION: Genera el JSON de configuración MCP adaptado a la ruta del estudiante. Usar la ruta absoluta de Bun (la misma detectada en el Paso 5) y la ruta al servidor compilado:
 
 ```json
 {
   "mcpServers": {
     "ClaudeTalkToFigma": {
-      "command": "bun",
-      "args": ["--cwd", "[RUTA_ABSOLUTA]", "run", "src/claude_mcp_server/index.ts"]
+      "command": "[RUTA_ABSOLUTA_BUN]",
+      "args": ["--cwd", "[RUTA_ABSOLUTA_PLUGIN]", "run", "dist/talk_to_figma_mcp/server.js"]
     }
   }
 }
@@ -510,8 +520,9 @@ USER: /sprint-2-3
 - Preguntar SO al inicio y guardar la respuesta para todo el sprint
 - macOS: rutas con `~/`, Bun instalado en `~/.bun/bin/bun`, atajos con `Cmd`
 - Windows: rutas con `C:\Users\...` o `%USERPROFILE%`, Bun puede estar en diferentes ubicaciones, atajos con `Ctrl`
-- Ruta de Bun: macOS `~/.bun/bin/bun`, Windows depende de la instalación
-- Siempre usar ruta absoluta en los comandos de MCP, no relativa
+- **Ruta absoluta de Bun:** Siempre detectar con `which bun` (macOS) o `where bun` (Windows) antes de generar comandos MCP. No usar `bun` a secas en configs MCP: el proceso no hereda el PATH del usuario
+- **Ruta del servidor MCP:** Usar siempre `dist/talk_to_figma_mcp/server.js` (compilado), no `src/` (fuente TypeScript). El build del Paso 3 genera esta carpeta
+- Siempre usar rutas absolutas en los comandos de MCP, no relativas
 
 ### Sobre el Socket Server en Background
 - Ejecutar `bun socket` con Bash run_in_background: true desde la ruta del plugin
@@ -520,12 +531,24 @@ USER: /sprint-2-3
 - El servidor arrancado en background morirá cuando se cierre la sesión de Claude Code — es normal
 - Para futuras sesiones, el estudiante debe arrancarlo manualmente (explicado en sección 5 y en la guía)
 
+### Sobre la Ubicación del Plugin
+- Recomendar siempre `~/` (carpeta de inicio) como ubicación del plugin
+- Rutas con **espacios** pueden causar fallos silenciosos en el argumento `--cwd` del MCP
+- **iCloud Drive** puede eliminar archivos locales para ahorrar espacio, rompiendo el plugin sin aviso. Si el estudiante ya lo tiene en iCloud y falla, sugerir: clic derecho en la carpeta → "Download Now" en Finder, o moverlo a `~/`
+
+### Sobre Atajos de Teclado en Figma
+- Algunos atajos de Figma cambian según la distribución del teclado. Ej: "Zoom to Fit" es `Cmd + 1` en teclado inglés pero `Shift + 1` en español
+- Seguir la regla del CLAUDE.md: indicar siempre la ruta por menú como instrucción principal, atajos solo como referencia secundaria
+- Si un atajo no funciona, preguntar al estudiante qué distribución de teclado usa
+
 ### Troubleshooting General
 - Si `git clone` falla → verificar git instalado, conexión a internet
 - Si `bun install` falla → verificar versión de Bun, limpiar cache con `rm -rf node_modules`
 - Si la importación del plugin falla → verificar que es Figma Desktop (no web), ruta correcta al manifest.json
 - Si el MCP no aparece tras `claude --continue` → verificar que el comando se ejecutó bien, probar `claude mcp list`
+- Si el MCP aparece pero falla → verificar que se usó la ruta absoluta de Bun (no `bun` a secas) y `dist/talk_to_figma_mcp/server.js` (no `src/`)
 - Si el socket server no arranca → verificar que puerto 3055 está libre
+- Si archivos del plugin no existen → puede ser iCloud optimizando almacenamiento. Clic derecho en Finder → "Download Now"
 - Si el plugin de Figma no conecta → verificar que bun socket está corriendo, puerto correcto
 - Si el channel ID no funciona → reconectar plugin, copiar nuevo ID, intentar `join_channel` de nuevo
 - Si una operación da timeout → simplificar la petición, reintentar

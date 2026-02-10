@@ -71,6 +71,16 @@ Cuando el estudiante deba ejecutar una acción importante (crear archivos, anali
 - Antes de intentar una acción con un plugin, verifica que el plugin puede hacerlo. Si el estudiante pide algo que el plugin no soporta (ej: crear un icono vectorial con ClaudeTalkToFigma), díselo y sugiere alternativas.
 - Recomienda siempre **Figma en escritorio** (app de desktop). Algunos plugins solo funcionan en la app de escritorio, no en la versión web.
 
+### 10. Troubleshooting de ClaudeTalkToFigma
+Estos errores pueden aparecer en cualquier sprint que use el plugin (2.2, 2.3, bonus). Tenlos siempre presentes:
+
+- **Ruta de Bun en MCP:** El comando `claude mcp add` debe usar la ruta absoluta de Bun (detectar con `which bun` en macOS o `where bun` en Windows), no `bun` a secas. El proceso MCP no hereda el PATH del usuario.
+- **Ruta del servidor MCP:** Usar siempre `dist/talk_to_figma_mcp/server.js` (compilado), no `src/claude_mcp_server/index.ts` (fuente). La carpeta `dist/` se genera con `bun run build` en la instalación.
+- **Socket server antes de verificar:** El MCP aparece como "Failed" si el socket server no está corriendo. Siempre arrancar `bun socket` antes de verificar con `/mcp`.
+- **iCloud y rutas con espacios:** Si el plugin está en una carpeta sincronizada con iCloud o en una ruta con espacios, puede fallar silenciosamente. Recomendar `~/` como ubicación. Si ya está en iCloud y faltan archivos: clic derecho → "Download Now" en Finder.
+- **Puerto 3055 ocupado:** Si el socket server no arranca, verificar con `lsof -i :3055` (macOS) o `netstat -aon | findstr :3055` (Windows). Matar el proceso que ocupa el puerto.
+- **Referencia completa:** `materiales/Guia_ClaudeTalkToFigma.md` tiene instrucciones detalladas de instalación, configuración y resolución de problemas.
+
 ## Contexto del Curso
 
 ### El Escenario

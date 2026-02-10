@@ -131,19 +131,19 @@ ACTION: Intentar usar cualquier herramienta del MCP (ej: get_document_info) para
 
 Necesitamos reconectar con Figma. Yo me encargo de la parte técnica, tú solo tienes que hacer un par de cosas en Figma.
 
-ACTION: Arrancar el servidor socket en background usando Bash con run_in_background: true. Ejecutar: `cd [RUTA_PLUGIN] && bun socket` (usar la ruta del plugin configurada en el sprint 2.2). Si `bun` no se reconoce, usar la ruta completa: `~/.bun/bin/bun socket` (macOS) o `%USERPROFILE%\.bun\bin\bun.exe socket` (Windows). Verificar que arranca correctamente. Si el puerto 3055 está ocupado, matar el proceso existente y reintentar.
+ACTION: Detectar la ruta del plugin consultando la configuración MCP existente con `claude mcp list` o leyendo el archivo de configuración MCP. Arrancar el servidor socket en background usando Bash con run_in_background: true. Ejecutar: `cd [RUTA_PLUGIN] && bun socket`. Si `bun` no se reconoce, detectar la ruta absoluta con `which bun` (macOS) o `where bun` (Windows) y usar esa ruta (ej: `~/.bun/bin/bun socket`). Verificar que arranca correctamente. Si el puerto 3055 está ocupado, matar el proceso existente y reintentar.
 
 Ya he arrancado el servidor de conexión.
 
 Ahora necesito que hagas tres cosas:
 
-**1.** Abre **Figma Desktop** con tu archivo PeopleOnBoard (o crea uno nuevo). 
+**1.** Abre **Figma Desktop** con tu archivo PeopleOnBoard (o crea uno nuevo).
 
 **2.** Ejecuta el plugin: clic derecho en el canvas → **Plugins** → **Development** → **Claude MCP Plugin**. Pulsa **"Connect"**.
 
-**2.** Pégame el **código de canal** que aparece en el plugin.
+**3.** Pégame el **código de canal** que aparece en el plugin.
 
-[Si el plugin muestra "Disconnected from server" al pulsar Connect → el servidor socket puede no haber arrancado bien. Verificar el estado del proceso en background. Reintentar con ruta completa de bun. Si sigue fallando, como último recurso pedir al estudiante: "Escribe `/exit`, luego ejecuta el comando del servidor, después `claude --continue`" y confírmame que has reiniciado la terminal.]
+[Si el plugin muestra "Disconnected from server" al pulsar Connect → el servidor socket puede no haber arrancado bien. Verificar el estado del proceso en background. Reintentar con ruta completa de bun (detectada con `which bun`). Si sigue fallando, como último recurso pedir al estudiante: "Escribe `/exit`, luego ejecuta el comando del servidor, después `claude --continue`" y confírmame que has reiniciado la terminal.]
 
 STOP: Pégame el código de canal.
 

@@ -73,10 +73,13 @@ Justo después de crear la carpeta, configurar los plugins como paso natural. Pr
 
 ACTION:
 1. Ejecutar `claude mcp list` para obtener la configuración actual de los MCPs (html-to-design y ClaudeTalkToFigma)
-2. Copiar la configuración MCP existente al scope del nuevo proyecto. Para cada servidor MCP configurado, ejecutar el mismo comando `claude mcp add` pero con scope del nuevo proyecto: `claude mcp add -s project --transport [tipo] [nombre] -- [args]` desde la carpeta del nuevo agente. Usar la ruta absoluta de la carpeta del nuevo agente como directorio de trabajo.
+2. Copiar la configuración MCP existente al scope del nuevo proyecto. Para cada servidor MCP configurado, ejecutar el mismo comando `claude mcp add` pero con scope del nuevo proyecto: `claude mcp add -s project --transport [tipo] [nombre] -- [args]` desde la carpeta del nuevo agente.
+   - **Importante:** Usar siempre la ruta absoluta de Bun (detectar con `which bun` o `where bun`), no `bun` a secas. El proceso MCP no hereda el PATH del usuario.
+   - **Importante:** Usar la ruta al servidor compilado `dist/talk_to_figma_mcp/server.js`, no `src/`.
+   - Si la configuración existente ya usa rutas absolutas correctas, copiarla tal cual.
 3. Verificar con `claude mcp list` desde el scope del proyecto nuevo
 
-[Si algún MCP no está configurado, no pasa nada. Configurar solo los que existan. Si no hay ninguno, mencionarlo como algo que podrá configurar más adelante siguiendo la guía del curso.]
+[Si algún MCP no está configurado, no pasa nada. Configurar solo los que existan. Si no hay ninguno, mencionarlo como algo que podrá configurar más adelante siguiendo la guía del curso en `materiales/Guia_ClaudeTalkToFigma.md`.]
 
 Después, explicar cómo abrir esta carpeta en Cursor para usar el agente:
 
@@ -140,7 +143,7 @@ Tu objetivo es ser más útil con cada conversación. Cuando descubras informaci
 ```markdown
 ## Mantenimiento de plugins
 
-De vez en cuando (cada pocas semanas, o cuando el usuario lo pida), ofrécete a comprobar si el plugin ClaudeTalkToFigma tiene actualizaciones disponibles. Puedes hacerlo ejecutando `git pull` en la carpeta del plugin y reinstalando dependencias con `bun install` si hay cambios. Si el usuario acepta, ejecuta la actualización y confirma que todo sigue funcionando.
+De vez en cuando (cada pocas semanas, o cuando el usuario lo pida), ofrécete a comprobar si el plugin ClaudeTalkToFigma tiene actualizaciones disponibles. Puedes hacerlo ejecutando `git pull` en la carpeta del plugin. Si hay cambios, reinstala dependencias y reconstruye con `bun install && bun run build`. Si el usuario acepta, ejecuta la actualización y confirma que todo sigue funcionando. Si algo falla, consulta la guía de troubleshooting del curso.
 ```
 
 **Sección de planning mode** (incluir en el CLAUDE.md generado):

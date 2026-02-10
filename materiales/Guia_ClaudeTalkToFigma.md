@@ -55,8 +55,10 @@ cd ~/claude-talk-to-figma-mcp && bun install && bun run build
 **5. Configurar MCP en Claude Code:**
 
 ```bash
-claude mcp add --transport stdio ClaudeTalkToFigma -- bun --cwd ~/claude-talk-to-figma-mcp run src/claude_mcp_server/index.ts
+claude mcp add --transport stdio ClaudeTalkToFigma -- ~/.bun/bin/bun --cwd ~/claude-talk-to-figma-mcp run dist/talk_to_figma_mcp/server.js
 ```
+
+**Nota:** Usamos la ruta absoluta de Bun (`~/.bun/bin/bun`) y el archivo compilado (`dist/`) en vez del fuente (`src/`). Es más fiable porque el proceso MCP no siempre hereda el PATH del usuario.
 
 Si ya tienes una sesión de Claude Code abierta, sal con `/exit`, ejecuta el comando y vuelve con `claude --continue`.
 
@@ -100,8 +102,10 @@ Nota: en Windows se usa `build:win` en vez de `build`.
 **5. Configurar MCP en Claude Code:**
 
 ```powershell
-claude mcp add --transport stdio ClaudeTalkToFigma -- bun --cwd %USERPROFILE%\claude-talk-to-figma-mcp run src/claude_mcp_server/index.ts
+claude mcp add --transport stdio ClaudeTalkToFigma -- %USERPROFILE%\.bun\bin\bun.exe --cwd %USERPROFILE%\claude-talk-to-figma-mcp run dist/talk_to_figma_mcp/server.js
 ```
+
+**Nota:** Usamos la ruta absoluta de Bun y el archivo compilado (`dist/`). Verifica tu ruta de Bun con `where bun` en PowerShell.
 
 Si ya tienes una sesión de Claude Code abierta, sal con `/exit`, ejecuta el comando y vuelve con `claude --continue`.
 
@@ -120,8 +124,8 @@ Si prefieres usar Claude Desktop en vez de Claude Code:
 {
   "mcpServers": {
     "ClaudeTalkToFigma": {
-      "command": "bun",
-      "args": ["--cwd", "/Users/TU_USUARIO/claude-talk-to-figma-mcp", "run", "src/claude_mcp_server/index.ts"]
+      "command": "/Users/TU_USUARIO/.bun/bin/bun",
+      "args": ["--cwd", "/Users/TU_USUARIO/claude-talk-to-figma-mcp", "run", "dist/talk_to_figma_mcp/server.js"]
     }
   }
 }
@@ -133,8 +137,8 @@ Si prefieres usar Claude Desktop en vez de Claude Code:
 {
   "mcpServers": {
     "ClaudeTalkToFigma": {
-      "command": "bun",
-      "args": ["--cwd", "C:\\Users\\TU_USUARIO\\claude-talk-to-figma-mcp", "run", "src/claude_mcp_server/index.ts"]
+      "command": "C:\\Users\\TU_USUARIO\\.bun\\bin\\bun.exe",
+      "args": ["--cwd", "C:\\Users\\TU_USUARIO\\claude-talk-to-figma-mcp", "run", "dist\\talk_to_figma_mcp\\server.js"]
     }
   }
 }
