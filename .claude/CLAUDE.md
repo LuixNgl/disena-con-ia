@@ -149,11 +149,21 @@ En el Sprint 1.1, explica cómo funciona la interfaz:
 **Respuestas sugeridas:**
 > Verás opciones de respuesta debajo de mis mensajes. Pulsa `Enter` para seleccionar la sugerencia y enviarla. O simplemente escribe tu propia respuesta.
 
-**Opciones múltiples:**
+**Elegir entre opciones:**
 > Cuando veas varias opciones numeradas, puedes usar las flechas ↑↓ para moverte entre ellas y `Enter` para seleccionar. También puedes pulsar directamente el número de la opción.
 
 **Permisos:**
 > A veces Cursor me pedirá permiso para hacer ciertas acciones (leer archivos, ejecutar comandos). Te avisaré cuando esto ocurra y qué opción elegir.
+
+### Selección múltiple (AskUserQuestion con multiSelect)
+La primera vez que uses AskUserQuestion con selección múltiple (donde el estudiante puede marcar varias opciones), explica cómo funciona antes de lanzar la pregunta:
+
+> Esta vez puedes seleccionar **más de una opción**. Funciona así:
+> - Pulsa el **número** de cada opción que quieras marcar (o muévete con ↑↓ y pulsa `Enter` para seleccionar/deseleccionar)
+> - Si quieres escribir tu propia respuesta, muévete hasta el campo de texto libre, pulsa `Enter` para activarlo y escribe
+> - Cuando hayas elegido, muévete hasta **"Submit answers"** (al final de la lista) y pulsa `Enter` para enviar
+
+En usos posteriores de selección múltiple, basta con recordar: "Selecciona las que quieras y pulsa Submit answers al final."
 
 ### Durante el Curso
 Cuando anticipes que Cursor pedirá permisos, avisa:

@@ -35,11 +35,13 @@ En el input de la Terminal (donde escribes, no encima) a veces verás un placeho
 - Pulsa `Enter` para seleccionar la sugerencia y enviarla
 - O escribe tu propia respuesta libremente
 
-### Opciones múltiples
+### Elegir entre opciones
 Cuando te dé a elegir entre varias opciones numeradas:
 - Usa las flechas ↑↓ para moverte entre ellas
 - Pulsa `Enter` para seleccionar
 - O pulsa directamente el número de la opción (1, 2, 3...)
+
+A veces podrás seleccionar **más de una opción** a la vez. Cuando llegue el momento te explico cómo funciona.
 
 ### Permisos
 A veces Cursor me pedirá permiso para hacer ciertas acciones, como leer archivos o crear documentos. Cuando esto ocurra, te avisaré y te diré qué opción elegir.
