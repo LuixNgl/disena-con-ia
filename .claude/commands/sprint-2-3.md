@@ -131,7 +131,7 @@ ACTION: Intentar usar cualquier herramienta del MCP (ej: get_document_info) para
 
 Necesitamos reconectar con Figma. Yo me encargo de la parte técnica, tú solo tienes que hacer un par de cosas en Figma.
 
-ACTION: Detectar la ruta del plugin consultando la configuración MCP existente con `claude mcp list` o leyendo el archivo de configuración MCP. Arrancar el servidor socket en background usando Bash con run_in_background: true. Ejecutar: `cd [RUTA_PLUGIN] && bun socket`. Si `bun` no se reconoce, detectar la ruta absoluta con `which bun` (macOS) o `where bun` (Windows) y usar esa ruta (ej: `~/.bun/bin/bun socket`). Verificar que arranca correctamente. Si el puerto 3055 está ocupado, matar el proceso existente y reintentar.
+ACTION: Detectar la ruta del plugin consultando la configuración MCP existente con `claude mcp list` o leyendo el archivo de configuración MCP. Arrancar el servidor socket en background usando Bash con run_in_background: true. Ejecutar: `cd [RUTA_PLUGIN] && bun run socket`. Si `bun` no se reconoce, intentar con `npx claude-talk-to-figma-mcp [RUTA_PLUGIN]`. Verificar que arranca correctamente con `curl -s http://localhost:3055/status`. Si el puerto 3055 está ocupado, matar el proceso existente y reintentar.
 
 Ya he arrancado el servidor de conexión.
 
@@ -143,7 +143,7 @@ Ahora necesito que hagas tres cosas:
 
 **3.** Pégame el **código de canal** que aparece en el plugin.
 
-[Si el plugin muestra "Disconnected from server" al pulsar Connect → el servidor socket puede no haber arrancado bien. Verificar el estado del proceso en background. Reintentar con ruta completa de bun (detectada con `which bun`). Si sigue fallando, como último recurso pedir al estudiante: "Escribe `/exit`, luego ejecuta el comando del servidor, después `claude --continue`" y confírmame que has reiniciado la terminal.]
+[Si el plugin muestra "Disconnected from server" al pulsar Connect → el servidor socket puede no haber arrancado bien. Verificar con `curl -s http://localhost:3055/status`. Reintentar con `npx claude-talk-to-figma-mcp [RUTA_PLUGIN]` en background. Si sigue fallando, como último recurso pedir al estudiante: "Escribe `/exit`, luego ejecuta el comando del servidor, después `claude --continue`" y confírmame que has reiniciado la terminal.]
 
 STOP: Pégame el código de canal.
 

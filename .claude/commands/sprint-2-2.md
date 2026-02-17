@@ -18,66 +18,18 @@ USER: Sí / Vamos / Adelante
 
 ## Instalación
 
-Vamos a configurar todo paso a paso. La instalación del plugin es algo técnica, pero yo te guío y en cada paso te explico qué estamos haciendo y para qué.
-Deberás dar permisos bastantes veces durante la instalación. Te recomiendo usar la opción 2 `always allow` para agilizarlo un poco.
+Vamos a configurar todo paso a paso. La instalación consta de cuatro pasos, pero la parte técnica la hago yo. Tú solo tendrás que importar el plugin en Figma y ejecutar un comando.
+Deberás dar permisos varias veces durante la instalación. Te recomiendo usar la opción 2 `always allow` para agilizarlo un poco.
 
-Para empezar:
+STOP: ¿Comenzamos la instalación?
 
-ACTION: Usa AskUserQuestion para preguntar:
-
-Pregunta: ¿Qué sistema operativo usas?
-- macOS
-- Windows
-
-[Guardar la respuesta para adaptar todos los comandos del sprint: rutas, instaladores, atajos de teclado]
+USER: Sí / Vamos / Adelante
 
 ---
 
-### Paso 1: Verificar Bun
+### Paso 1: Descargar el plugin y arrancar el servidor
 
-Voy a comprobar si tienes instalado **Bun** — es una herramienta que permite ejecutar el plugin que conecta Claude con Figma.
-
-ACTION: Comprobar si Bun ya está instalado ejecutando `bun --version` en bash.
-
-[Si Bun ya está instalado]
-
-Ya tienes Bun instalado (versión X.X.X). Un paso menos.
-
-STOP: ¿Continuamos?
-
-USER: Sí / Continuamos / Adelante
-
-[Si Bun NO está instalado]
-
-No lo tienes instalado, pero lo soluciono en un momento.
-
-ACTION: Instalar Bun directamente desde esta terminal:
-- macOS: ejecutar `curl -fsSL https://bun.sh/install | bash` en bash
-- Windows: ejecutar `powershell -c "irm bun.sh/install.ps1 | iex"` en bash
-
-ACTION: Tras la instalación, recargar el shell y verificar con `bun --version`. Seguir el protocolo de "Recargar la Terminal" del agente instructor (exec $SHELL → ruta completa → /exit + claude --continue como último recurso).
-
-[Si la instalación fue exitosa]
-
-Listo, Bun instalado (versión X.X.X).
-
-STOP: ¿Continuamos?
-
-USER: Sí / Continuamos / Adelante
-
-[Si la instalación falla]
-
-ACTION: Diagnosticar:
-- Seguir el protocolo de "Recargar la Terminal" del agente instructor
-- Windows: puede necesitar ejecutar PowerShell como administrador (buscar "PowerShell" en Inicio → clic derecho → Ejecutar como administrador), ejecutar `irm bun.sh/install.ps1 | iex`
-- En ambos: verificar conexión a internet
-- Alternativa: instalar via npm si lo tiene → `npm install -g bun`
-
----
-
-### Paso 2: Descargar el plugin
-
-Vamos a descargar tu propio plugin de Figma. Es más sencillo de lo que parece — unos pocos comandos y ya lo tendrás.
+Voy a descargar y configurar el plugin por ti. Solo necesito saber dónde guardarlo.
 
 ACTION: Usa AskUserQuestion para preguntar:
 
@@ -92,73 +44,41 @@ Pregunta: ¿Dónde quieres guardar el plugin?
 - Si la ruta está dentro de **iCloud Drive** (macOS: `~/Library/Mobile Documents/com~apple~CloudDocs/...`), avisar: "Esa carpeta está sincronizada con iCloud. macOS puede eliminar los archivos locales para ahorrar espacio, lo que haría que el plugin deje de funcionar. Mejor guardarla en la carpeta de inicio (`~/`)."
 - La carpeta de inicio (`~/`) evita ambos problemas y es la opción más fiable.]
 
-Aquí va el comando para descargarlo:
+Estoy descargando y configurando el plugin. Puede tardar unos segundos, no tienes que hacer nada.
 
-```
-git clone https://github.com/arinspunk/claude-talk-to-figma-mcp.git [RUTA_ELEGIDA]
-```
+ACTION: Ejecutar el siguiente comando en Bash con `run_in_background: true`:
+`npx claude-talk-to-figma-mcp [RUTA_ELEGIDA]`
 
-Puedes copiarlo y ejecutarlo tú en la terminal, o si prefieres, dime "ejecútalo" y lo hago yo.
+[Si npx pide confirmación de instalación, puede que necesite ejecutarse sin `run_in_background` la primera vez para aceptar el prompt, y luego rearrancar en background.]
 
-STOP: ¿Lo ejecutas tú o lo ejecuto yo?
+ACTION: Comprobar periódicamente si el servidor está listo ejecutando:
+`curl -s http://localhost:3055/status`
+Repetir cada 5-10 segundos hasta que responda. Cuando el servidor responde, informar al estudiante.
 
-USER: Ejecútalo / Lo hago yo / [Problema]
+[Si el servidor arranca correctamente]
 
-ACTION: Si el estudiante pide que lo ejecutes, ejecutar el `git clone` en bash. Si prefiere hacerlo él, esperar confirmación.
+Listo. El plugin está descargado y el servidor de conexión con Figma ya está funcionando.
 
-STOP: ¿Se ha descargado correctamente?
+STOP: ¿Continuamos?
 
-USER: Sí / Listo / Descargado / [Problema]
+USER: Sí / Continuamos / Adelante
 
-## [Si tiene problemas con git clone]
+## [Si tiene problemas con npx o el servidor]
 
 ACTION: Diagnosticar:
-- "git: command not found" → Git no está instalado. macOS: `xcode-select --install`. Windows: descargar desde git-scm.com
+- "npx: command not found" → Node.js no está instalado. Indicar al estudiante que lo descargue e instale desde [nodejs.org](https://nodejs.org/) (la versión LTS). Tras instalar, puede que necesite reiniciar la terminal (seguir el protocolo de "Recargar la Terminal" del agente instructor)
 - Error de conexión → verificar internet
 - Permiso denegado → verificar ruta, no necesita sudo/admin
 - La carpeta ya existe → preguntar si quiere eliminarla y clonar de nuevo, o usar la existente
+- El servidor no responde → Verificar con `curl -s http://localhost:3055/status`
+- Puerto ocupado → macOS: `lsof -i :3055`. Windows: `netstat -aon | findstr :3055`. Matar el proceso que ocupa el puerto
+- Timeout o proceso parado → Reintentar el comando npx. Si persiste, intentar manualmente: `cd [RUTA_ELEGIDA] && npm install && npm run build && npm run socket`
 
 ---
 
-### Paso 3: Instalar y construir
+### Paso 2: Importar el plugin en Figma
 
-Ahora instalamos las dependencias del plugin y lo preparamos:
-
-[macOS/Linux]
-```
-cd [RUTA_ELEGIDA] && bun install && bun run build
-```
-
-[Windows]
-```
-cd [RUTA_ELEGIDA] && bun install && bun run build:win
-```
-
-Igual que antes: puedes ejecutarlo tú o dime que lo haga yo.
-
-STOP: ¿Lo ejecutas tú o lo ejecuto yo?
-
-USER: Ejecútalo / Hazlo tú / Lo hago yo / [Problema]
-
-ACTION: Si el estudiante pide que lo ejecutes, ejecutar el comando en bash. Si prefiere hacerlo él, esperar confirmación. Puede tardar unos segundos.
-
-STOP: ¿Ha terminado sin errores?
-
-USER: Sí / Listo / [Problema]
-
-## [Si tiene problemas con bun install o build]
-
-ACTION: Diagnosticar:
-- "bun: command not found" → La terminal no reconoce Bun. Ejecutar `exec $SHELL` (macOS) o reiniciar terminal (Windows)
-- Errores de permisos → No usar sudo, verificar permisos de la carpeta
-- Errores de dependencias → Limpiar cache: `rm -rf node_modules && bun install`
-- Error en build → Verificar versión de Bun (`bun --version`), actualizar si es muy antigua
-
----
-
-### Paso 4: Importar el plugin en Figma
-
-Ahora viene la parte de Figma. Este plugin no está en la tienda de Figma — por eso lo hemos descargado. Importarlo es sencillo:
+Ahora viene la parte de Figma. Este plugin no está en la tienda de Figma, por eso lo hemos descargado. Importarlo es sencillo:
 
 1. Abre **Figma Desktop** (importante: la app de escritorio, no la web)
 2. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
@@ -177,41 +97,30 @@ USER: Sí / Lo veo / [Problema]
 ACTION: Diagnosticar:
 - No encuentra la opción "Import plugin from manifest..." → Verificar que es Figma Desktop (no web). En la app de escritorio: Plugins → Development → Import plugin from manifest...
 - No encuentra el archivo manifest.json → La ruta correcta es `[RUTA]/src/claude_mcp_plugin/manifest.json`. Ayudar a navegar
-- Error al importar → Verificar que el build se completó sin errores (Paso 3)
+- Error al importar → Verificar que la descarga del Paso 1 se completó sin errores
 - Usa Figma en el navegador → Necesita la app de escritorio para plugins de desarrollo. Puede descargarla desde figma.com/downloads
 
 ---
 
-### Paso 5: Configurar MCP en Claude Code
+### Paso 3: Configurar MCP en Claude Code
 
 Igual que configuramos html.to.design en el sprint anterior, ahora añadimos este servidor MCP.
 
-ACTION: Antes de generar el comando, detectar la ruta absoluta de Bun ejecutando `which bun` (macOS/Linux) o `where bun` (Windows) en bash. Guardar esta ruta (ej: `/Users/usuario/.bun/bin/bun`) para usarla en el comando MCP. No usar `bun` a secas: el proceso MCP no siempre tiene acceso al mismo PATH que la terminal del usuario.
+Este es el comando:
 
-ACTION: Genera el comando `claude mcp add` con la ruta absoluta de Bun y la ruta al servidor compilado. El formato es:
-
-[macOS/Linux]
+```bash
+claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server
 ```
-claude mcp add --transport stdio ClaudeTalkToFigma -- [RUTA_ABSOLUTA_BUN] --cwd [RUTA_ABSOLUTA_PLUGIN] run dist/talk_to_figma_mcp/server.js
-```
-
-[Windows]
-```
-claude mcp add --transport stdio ClaudeTalkToFigma -- [RUTA_ABSOLUTA_BUN] --cwd [RUTA_ABSOLUTA_PLUGIN] run dist/talk_to_figma_mcp/server.js
-```
-
-**Importante:** Usamos `dist/` (el código compilado) en vez de `src/` (el fuente TypeScript). Es más estable porque no depende de que TypeScript se resuelva en tiempo de ejecución.
-
-Muestra el comando exacto al estudiante con ambas rutas ya resueltas.
 
 ---
 
-Para ejecutar este comando, el proceso es el mismo que con html.to.design:
+Para ejecutarlo, el proceso es el mismo que con html.to.design:
 
 1. Escribe `/exit` para cerrar esta sesión
 2. En la terminal, ejecuta:
 
-ACTION: Repite aquí el comando exacto con la ruta absoluta ya resuelta, tal como se generó arriba. No uses [RUTA_ABSOLUTA] — muestra el comando final listo para copiar y pegar.
+ACTION: Repite aquí el comando exacto listo para copiar y pegar:
+`claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server`
 
 3. Escribe `claude --continue` para retomar la conversación donde la dejamos
 
@@ -224,32 +133,8 @@ USER: Sí / Listo / Hecho / [Problema]
 ## [Si tiene problemas con el comando MCP]
 
 ACTION: Diagnosticar:
-- Error al ejecutar → Verificar que la ruta es correcta y que las comillas están bien
 - No reconoce `claude` → Verificar que Claude Code está instalado
 - Quiere verificar → Ejecutar `claude mcp list` para ver los servidores configurados
-- El MCP aparece pero no conecta → Verificar que Bun está accesible, que la ruta al proyecto es correcta
-
----
-
-### Paso 6: Arrancar el servidor y verificar
-
-Antes de verificar que todo está bien, necesito arrancar el servidor que conecta Claude con Figma.
-
-ACTION: Arranca el servidor socket en background usando Bash con run_in_background: true.
-Ejecutar: `cd [RUTA_ELEGIDA] && bun socket`
-Si `bun` no se encuentra, usar la ruta absoluta detectada en el Paso 5 (ej: `~/.bun/bin/bun socket`).
-Verificar con: `curl -s http://localhost:3055/status` (o similar endpoint de health check)
-
-Si el servidor arranca correctamente, informar al estudiante:
-
-He iniciado el servidor de conexión con Figma. Ya está funcionando.
-
-[Si el servidor no arranca]
-
-ACTION: Diagnosticar:
-- Puerto ocupado → macOS: `lsof -i :3055`. Windows: `netstat -aon | findstr :3055`. Matar el proceso que ocupa el puerto
-- Bun no encontrado → Usar ruta completa: `~/.bun/bin/bun socket`
-- Error de dependencias → Volver al Paso 3 y reinstalar
 
 ---
 
@@ -266,13 +151,12 @@ USER: Sí / Lo veo / [Problema]
 ## [Si el MCP no aparece o no está verde]
 
 ACTION: Diagnosticar:
-- No aparece en la lista → El comando `claude mcp add` no se ejecutó. Repetir Paso 5
-- Aparece pero en rojo → Verificar que la ruta absoluta de Bun es correcta (ejecutar `which bun`), que la ruta al plugin es correcta, ejecutar `claude mcp list` para más detalles
-- Error de conexión → Verificar ruta al server.js compilado, ejecutar `[RUTA_BUN] --cwd [RUTA_PLUGIN] run dist/talk_to_figma_mcp/server.js` en terminal para ver errores
+- No aparece en la lista → El comando `claude mcp add` no se ejecutó. Repetir Paso 3
+- Aparece pero en rojo/failed → Puede ser que el servidor socket del Paso 1 no esté corriendo. Verificar con `curl -s http://localhost:3055/status`. Si no responde, rearrancar: ejecutar `npx claude-talk-to-figma-mcp [RUTA_ELEGIDA]` en Bash con `run_in_background: true` y esperar a que responda
 
 ---
 
-### Paso 7: Conectar con Figma
+### Paso 4: Conectar con Figma
 
 Ahora abre tu archivo **PeopleOnBoard** en Figma (el que creaste en el Sprint 2.1).
 
@@ -288,7 +172,7 @@ USER: [channel ID]
 
 ---
 
-### Paso 8: Establecer conexión
+### Paso 5: Establecer conexión
 
 ACTION: Usa la herramienta `join_channel` del MCP ClaudeTalkToFigma con el channel ID que proporcionó el estudiante. Confirma la conexión exitosa.
 
@@ -313,7 +197,7 @@ USER: Sí / Continuamos / Adelante
 ACTION: Diagnosticar:
 - Channel ID incorrecto → Pedir que copie de nuevo el código del plugin
 - Plugin no conectado → Verificar que el plugin está abierto, pulsó "Connect" en el plugin si hacía falta y que el socket server está corriendo
-- Timeout → Verificar que `bun socket` sigue corriendo en background, reiniciar si es necesario
+- Timeout → Verificar que el websocket sigue corriendo en background, reiniciar si es necesario
 - Error de WebSocket → Verificar que el puerto 3055 está libre y accesible. Se le puede indicar que comparta el código completo que destaca el plugin in color verde. Tiene este formato: Connected to server on port 3055 in channel: skylapju
 
 ---
@@ -357,7 +241,7 @@ ACTION: Diagnosticar paso a paso:
 2. ¿El canal es el correcto? → Si cambió, pedir nuevo channel ID y reconectar con join_channel
 3. ¿La herramienta devolvió error? → Leer el error y adaptar: puede ser un nodo incorrecto, un valor inválido, etc.
 4. Intentar un cambio más simple (ej: cambiar un texto) para confirmar que la conexión funciona
-5. Si nada funciona → Reiniciar: cerrar plugin en Figma, detener bun socket, volver a arrancarlo, reconectar
+5. Si nada funciona → Reiniciar: cerrar plugin en Figma, detener el servidor, volver a arrancarlo (ver Notas para Claude), reconectar
 
 ## [Si pide algo fuera de capacidades]
 
@@ -381,7 +265,7 @@ Aquí tienes una referencia rápida de las capacidades actuales del plugin:
 | Usar componentes de la librería local | Crear animaciones |
 | Redimensionar y mover elementos | Acceder a funciones PRO de Figma |
 
-El plugin está en desarrollo activo. Estas capacidades se amplían con cada versión. Puedes consultar la información actualizada en https://github.com/arinspunk/claude-talk-to-figma-mcp 
+El plugin está en desarrollo activo. Estas capacidades se amplían con cada versión. Puedes consultar la información actualizada en https://github.com/arinspunk/claude-talk-to-figma-mcp
 
 Y recuerda: para diseños completos desde cero, el enfoque HTML del Sprint 2.1 sigue siendo más eficiente. Este plugin es ideal para iterar y refinar.
 
@@ -403,7 +287,7 @@ Ahora que ya tienes todo configurado, quiero asegurarme de que puedes usar esto 
 
 Cada vez que quieras usar Claude con Figma, necesitas tres cosas:
 
-1. **El servidor socket corriendo** → Abre una terminal → `cd [RUTA_ELEGIDA]` → `bun socket`
+1. **El servidor socket corriendo** → Abre una terminal → ejecuta `npx claude-talk-to-figma-mcp [RUTA_ELEGIDA]` (o desde la carpeta del plugin: `cd [RUTA_ELEGIDA] && bun run socket`)
 2. **El plugin abierto en Figma** → Plugins → Development → Claude MCP Plugin → Connect
 3. **Conectar Claude al canal** → Copia el código del plugin y dile a Claude: `Talk to Figma, channel {tu-código}`
 
@@ -421,7 +305,7 @@ USER: Sí / Claro / Entendido
 
 Si quieres usar esta funcionalidad fuera de Cursor, puedes hacerlo directamente desde la terminal de tu sistema operativo: **Terminal** en macOS o **PowerShell** en Windows:
 
-1. En una pestaña: `cd [RUTA_ELEGIDA] && bun socket`
+1. En una pestaña: `npx claude-talk-to-figma-mcp [RUTA_ELEGIDA]`
 2. En otra pestaña: escribe `claude` para abrir Claude Code
 3. Dile a Claude: `Talk to Figma, channel {tu-código}`
 
@@ -434,16 +318,14 @@ Si tienes la app **Claude Desktop** instalada, también puedes usar esta funcion
 Necesitas una configuración previa (solo la primera vez):
 
 1. Abre Claude Desktop → **Settings** → **Developer** → **Edit Config**
-2. Añade esta configuración (yo te la genero con tu ruta):
-
-ACTION: Genera el JSON de configuración MCP adaptado a la ruta del estudiante. Usar la ruta absoluta de Bun (la misma detectada en el Paso 5) y la ruta al servidor compilado:
+2. Añade esta configuración:
 
 ```json
 {
   "mcpServers": {
     "ClaudeTalkToFigma": {
-      "command": "[RUTA_ABSOLUTA_BUN]",
-      "args": ["--cwd", "[RUTA_ABSOLUTA_PLUGIN]", "run", "dist/talk_to_figma_mcp/server.js"]
+      "command": "npx",
+      "args": ["-p", "claude-talk-to-figma-mcp@latest", "claude-talk-to-figma-mcp-server"]
     }
   }
 }
@@ -516,24 +398,28 @@ USER: /sprint-2-3
 
 ## Notas para Claude (No mostrar al estudiante)
 
-### Detección de SO y Adaptación de Comandos
-- Preguntar SO al inicio y guardar la respuesta para todo el sprint
-- macOS: rutas con `~/`, Bun instalado en `~/.bun/bin/bun`, atajos con `Cmd`
-- Windows: rutas con `C:\Users\...` o `%USERPROFILE%`, Bun puede estar en diferentes ubicaciones, atajos con `Ctrl`
-- **Ruta absoluta de Bun:** Siempre detectar con `which bun` (macOS) o `where bun` (Windows) antes de generar comandos MCP. No usar `bun` a secas en configs MCP: el proceso no hereda el PATH del usuario
-- **Ruta del servidor MCP:** Usar siempre `dist/talk_to_figma_mcp/server.js` (compilado), no `src/` (fuente TypeScript). El build del Paso 3 genera esta carpeta
-- Siempre usar rutas absolutas en los comandos de MCP, no relativas
+### Sobre el Comando npx y el Servidor en Background
+- Ejecutar `npx claude-talk-to-figma-mcp [RUTA]` con Bash `run_in_background: true`
+- Este comando clona el repo, instala dependencias, construye y arranca el servidor websocket
+- Verificar que el servidor está listo con `curl -s http://localhost:3055/status` — repetir cada 5-10 segundos hasta que responda
+- Si npx pide confirmación interactiva para instalar el paquete, puede que necesite ejecutarse sin background primero. En ese caso, ejecutar normalmente, esperar a que complete, y si bloquea la terminal, matarlo y rearrancar con `cd [RUTA] && bun run socket` en background
+- Si el servidor se cae durante el sprint, rearrancarlo con: `cd [RUTA_ELEGIDA] && bun run socket` en Bash con `run_in_background: true`
 
-### Sobre el Socket Server en Background
-- Ejecutar `bun socket` con Bash run_in_background: true desde la ruta del plugin
-- Verificar con curl a localhost:3055/status (o similar health check)
+### Detección de SO
+- El comando npx es cross-platform, no necesita adaptación por SO
+- Sin embargo, sigue siendo necesario conocer el SO del estudiante para:
+  - Atajos de teclado: `Cmd` (macOS) vs `Ctrl` (Windows)
+  - Comandos de troubleshooting: `lsof -i :3055` (macOS) vs `netstat -aon | findstr :3055` (Windows)
+- Si no se conoce el SO del estudiante desde un sprint anterior, detectarlo por contexto del sistema o preguntar solo si es necesario para troubleshooting
+
+### Sobre el Puerto 3055
 - Si el puerto 3055 está ocupado: macOS `lsof -i :3055`, Windows `netstat -aon | findstr :3055`
 - El servidor arrancado en background morirá cuando se cierre la sesión de Claude Code — es normal
-- Para futuras sesiones, el estudiante debe arrancarlo manualmente (explicado en sección 5 y en la guía)
+- Para futuras sesiones, el estudiante debe arrancarlo manualmente (explicado en la sección "Cómo usar fuera del curso" y en la guía)
 
 ### Sobre la Ubicación del Plugin
 - Recomendar siempre `~/` (carpeta de inicio) como ubicación del plugin
-- Rutas con **espacios** pueden causar fallos silenciosos en el argumento `--cwd` del MCP
+- Rutas con **espacios** pueden causar fallos silenciosos
 - **iCloud Drive** puede eliminar archivos locales para ahorrar espacio, rompiendo el plugin sin aviso. Si el estudiante ya lo tiene en iCloud y falla, sugerir: clic derecho en la carpeta → "Download Now" en Finder, o moverlo a `~/`
 
 ### Sobre Atajos de Teclado en Figma
@@ -542,14 +428,13 @@ USER: /sprint-2-3
 - Si un atajo no funciona, preguntar al estudiante qué distribución de teclado usa
 
 ### Troubleshooting General
-- Si `git clone` falla → verificar git instalado, conexión a internet
-- Si `bun install` falla → verificar versión de Bun, limpiar cache con `rm -rf node_modules`
+- Si `npx` no se encuentra → Node.js no está instalado. Instalar desde nodejs.org (versión LTS)
 - Si la importación del plugin falla → verificar que es Figma Desktop (no web), ruta correcta al manifest.json
 - Si el MCP no aparece tras `claude --continue` → verificar que el comando se ejecutó bien, probar `claude mcp list`
-- Si el MCP aparece pero falla → verificar que se usó la ruta absoluta de Bun (no `bun` a secas) y `dist/talk_to_figma_mcp/server.js` (no `src/`)
+- Si el MCP aparece pero falla → verificar que el servidor socket está corriendo (`curl -s http://localhost:3055/status`)
 - Si el socket server no arranca → verificar que puerto 3055 está libre
 - Si archivos del plugin no existen → puede ser iCloud optimizando almacenamiento. Clic derecho en Finder → "Download Now"
-- Si el plugin de Figma no conecta → verificar que bun socket está corriendo, puerto correcto
+- Si el plugin de Figma no conecta → verificar que el servidor socket está corriendo, puerto correcto
 - Si el channel ID no funciona → reconectar plugin, copiar nuevo ID, intentar `join_channel` de nuevo
 - Si una operación da timeout → simplificar la petición, reintentar
 
@@ -560,7 +445,7 @@ USER: /sprint-2-3
 - Herramientas clave disponibles: get_document_info, get_selection, set_fill_color, set_text_content, resize, move, clone, create_rectangle, create_text, create_ellipse, create_frame, set_auto_layout, set_corner_radius, set_stroke, set_effect, group_nodes, ungroup_nodes, get_styles, set_font_size, set_font_weight, set_line_height, set_letter_spacing, set_text_align, etc.
 
 ### Sobre el Ritmo
-- La instalación es la parte más larga. Mantener ritmo ágil con confirmaciones frecuentes
+- La instalación es más rápida con la nueva versión, pero aún así mantener ritmo ágil con confirmaciones frecuentes
 - El momento WOW es cuando Claude hace el primer cambio en Figma — no apresurarlo
 - Si el estudiante quiere experimentar más en la sección de prueba, darle espacio
 - No extender demasiado la sección de capacidades — la tabla es suficiente
@@ -573,7 +458,7 @@ USER: /sprint-2-3
 
 ## Criterios de Éxito
 
-- [ ] Plugin clonado, instalado y construido sin errores
+- [ ] Plugin descargado e instalado via npx sin errores
 - [ ] Plugin importado en Figma Desktop
 - [ ] MCP configurado en Claude Code (`/mcp` muestra check verde)
 - [ ] Socket server corriendo (verificado via status endpoint)

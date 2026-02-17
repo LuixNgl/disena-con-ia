@@ -4,9 +4,9 @@ Empezamos el Sprint 2, la parte más visual del curso.
 
 En el Sprint 1 construiste los cimientos: research, análisis de competencia y un briefing de diseño profesional. Ahora vamos a convertir todo eso en propuestas de diseño reales.
 
-Al final de este sub-sprint puedes tener:
-- **4 propuestas de diseño** en HTML
-- Una de ellas **importada a Figma** como archivo editable
+El enfoque: primero explorar varias direcciones visuales en HTML (rápido, barato en tokens) y después llevar la elegida a Figma. En el siguiente sprint usaremos la IA para editar el diseño directamente en Figma, así que este paso nos sirve para llegar allí con una propuesta sólida y decisiones tomadas. Al final de este sub-sprint puedes tener:
+- **4 propuestas de diseño** comparadas y una dirección elegida
+- Tu propuesta **importada a Figma** como archivo editable con variables y auto-layout
 
 Antes de empezar, un tip: escribe `/usage` para ver cuántos tokens te quedan en esta sesión. Así puedes controlar el uso a lo largo del Sprint 2, que es el más intensivo. Cuando hayas visto los datos de uso, pulsa `Esc` para volver aquí.
 
@@ -20,7 +20,13 @@ USER: Sí / Vamos / Adelante
 
 Tienes el briefing en `outputs/prompt-diseno.md`. Vamos a usarlo para generar **4 propuestas de diseño en HTML**, cada una con un estilo visual diferente para que puedas elegir y definir mejor el estilo.
 
-¿Por qué HTML? Porque usaremos un plugin llamado **html.to.design** que convierte HTML en diseños editables de Figma. El HTML es nuestro puente entre la IA y Figma. Además, así podemos ver opciones y refinar antes de llegar a Figma y aprovechar mejor el freemium del plugin.
+¿Por qué HTML y no directamente Figma? Por dos razones principales:
+
+1. **Velocidad y coste:** La IA genera 4 propuestas en HTML en cuestión de minutos y con un consumo de tokens bajo. Hacer lo mismo directamente en Figma (crear frames, estilos, componentes, auto-layout...) llevaría mucho más tiempo y tokens. HTML es un medio rápido y barato para explorar direcciones visuales.
+
+2. **Mejores decisiones antes de Figma:** Cuando llegues a Figma, ya habrás elegido una dirección visual, descartado opciones y refinado tu propuesta. Llegas con decisiones tomadas, no a improvisar. Es similar a lo que hace un developer: no escribe código directamente, primero analiza el problema y define la solución.
+
+Después usaremos un plugin llamado **html.to.design** que convierte HTML en diseños editables de Figma. El HTML es nuestro puente entre la IA y Figma, y así también aprovechamos mejor el freemium del plugin.
 
 Aquí va el prompt:
 

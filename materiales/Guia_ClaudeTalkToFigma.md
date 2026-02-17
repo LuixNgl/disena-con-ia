@@ -13,101 +13,53 @@ Creado por **Xúlio Zé** (adaptación para Claude) a partir del proyecto origin
 ## Requisitos
 
 - **Figma Desktop** (no funciona desde la versión web de Figma)
-- **Bun** (se instala en el proceso, ocupa ~200 MB)
-- **Espacio en disco:** ~500 MB libres (Bun + plugin + dependencias)
+- **Node.js** (necesario para npx — descárgalo desde [nodejs.org](https://nodejs.org/) si no lo tienes)
+- **Espacio en disco:** ~500 MB libres (dependencias del plugin)
 - **Claude Code**, **Claude Desktop** o cualquier herramienta compatible con MCP
 
 ---
 
 ## Primera vez: Instalación
 
-### macOS / Linux
+### 1. Descargar el plugin y arrancar el servidor
 
-**1. Instalar Bun** (si no lo tienes):
-
-```bash
-curl -fsSL https://bun.sh/install | bash
-```
-
-Si la terminal no reconoce `bun` después de instalarlo, usa la ruta completa: `~/.bun/bin/bun`. Este problema es habitual con herramientas recién instaladas.
-
-**2. Clonar el repositorio:**
+Un solo comando descarga el plugin, instala las dependencias, construye el proyecto y arranca el servidor de conexión:
 
 ```bash
-git clone https://github.com/arinspunk/claude-talk-to-figma-mcp.git ~/claude-talk-to-figma-mcp
+npx claude-talk-to-figma-mcp ~/claude-talk-to-figma-mcp
 ```
 
 Puedes cambiar `~/claude-talk-to-figma-mcp` por la ruta que prefieras.
 
-**3. Instalar dependencias y construir:**
+> **Recomendación:** Guarda el plugin en tu carpeta de inicio (`~/` en macOS/Linux, `%USERPROFILE%` en Windows). Evita rutas con espacios o carpetas sincronizadas con iCloud/OneDrive, ya que pueden causar problemas.
 
-```bash
-cd ~/claude-talk-to-figma-mcp && bun install && bun run build
+El servidor está listo cuando veas algo como:
+
+```
+[INFO] Status endpoint available at http://localhost:3055/status
+[INFO] New client connected: client_...
 ```
 
-**4. Importar el plugin en Figma:**
+**Deja esta terminal abierta** mientras trabajas con el plugin.
 
-1. Abre Figma Desktop
+### 2. Importar el plugin en Figma
+
+1. Abre **Figma Desktop** (no la versión web)
 2. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
 3. Navega hasta: `~/claude-talk-to-figma-mcp/src/claude_mcp_plugin/manifest.json`
 4. Confirma que aparece "Claude MCP Plugin"
 
-**5. Configurar MCP en Claude Code:**
+> **Nota:** Solo necesitas importarlo la primera vez. Después aparece directamente en el menú de plugins.
+
+### 3. Configurar MCP en Claude Code
 
 ```bash
-claude mcp add --transport stdio ClaudeTalkToFigma -- ~/.bun/bin/bun --cwd ~/claude-talk-to-figma-mcp run dist/talk_to_figma_mcp/server.js
+claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server
 ```
-
-**Nota:** Usamos la ruta absoluta de Bun (`~/.bun/bin/bun`) y el archivo compilado (`dist/`) en vez del fuente (`src/`). Es más fiable porque el proceso MCP no siempre hereda el PATH del usuario.
 
 Si ya tienes una sesión de Claude Code abierta, sal con `/exit`, ejecuta el comando y vuelve con `claude --continue`.
 
----
-
-### Windows
-
-**1. Instalar Bun** (si no lo tienes):
-
-Abre PowerShell como administrador:
-
-```powershell
-powershell -c "irm bun.sh/install.ps1 | iex"
-```
-
-Cierra y vuelve a abrir la terminal.
-
-**2. Clonar el repositorio:**
-
-```powershell
-git clone https://github.com/arinspunk/claude-talk-to-figma-mcp.git %USERPROFILE%\claude-talk-to-figma-mcp
-```
-
-Puedes cambiar `%USERPROFILE%\claude-talk-to-figma-mcp` por la ruta que prefieras.
-
-**3. Instalar dependencias y construir:**
-
-```powershell
-cd %USERPROFILE%\claude-talk-to-figma-mcp && bun install && bun run build:win
-```
-
-Nota: en Windows se usa `build:win` en vez de `build`.
-
-**4. Importar el plugin en Figma:**
-
-1. Abre Figma Desktop
-2. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
-3. Navega hasta: `%USERPROFILE%\claude-talk-to-figma-mcp\src\claude_mcp_plugin\manifest.json`
-4. Confirma que aparece "Claude MCP Plugin"
-
-**5. Configurar MCP en Claude Code:**
-
-```powershell
-claude mcp add --transport stdio ClaudeTalkToFigma -- %USERPROFILE%\.bun\bin\bun.exe --cwd %USERPROFILE%\claude-talk-to-figma-mcp run dist/talk_to_figma_mcp/server.js
-```
-
-**Nota:** Usamos la ruta absoluta de Bun y el archivo compilado (`dist/`). Verifica tu ruta de Bun con `where bun` en PowerShell.
-
-Si ya tienes una sesión de Claude Code abierta, sal con `/exit`, ejecuta el comando y vuelve con `claude --continue`.
+Verifica que funciona: escribe `/mcp` en Claude Code y comprueba que **ClaudeTalkToFigma** aparece con check verde.
 
 ---
 
@@ -118,33 +70,18 @@ Si prefieres usar Claude Desktop en vez de Claude Code:
 1. Abre Claude Desktop → **Settings** → **Developer** → **Edit Config**
 2. Añade esta configuración:
 
-**macOS / Linux:**
-
 ```json
 {
   "mcpServers": {
     "ClaudeTalkToFigma": {
-      "command": "/Users/TU_USUARIO/.bun/bin/bun",
-      "args": ["--cwd", "/Users/TU_USUARIO/claude-talk-to-figma-mcp", "run", "dist/talk_to_figma_mcp/server.js"]
+      "command": "npx",
+      "args": ["-p", "claude-talk-to-figma-mcp@latest", "claude-talk-to-figma-mcp-server"]
     }
   }
 }
 ```
 
-**Windows:**
-
-```json
-{
-  "mcpServers": {
-    "ClaudeTalkToFigma": {
-      "command": "C:\\Users\\TU_USUARIO\\.bun\\bin\\bun.exe",
-      "args": ["--cwd", "C:\\Users\\TU_USUARIO\\claude-talk-to-figma-mcp", "run", "dist\\talk_to_figma_mcp\\server.js"]
-    }
-  }
-}
-```
-
-Sustituye `TU_USUARIO` por tu nombre de usuario. Si ya tienes otros servidores MCP configurados, añade solo la entrada `"ClaudeTalkToFigma": { ... }` dentro de `"mcpServers"`.
+Si ya tienes otros servidores MCP configurados, añade solo la entrada `"ClaudeTalkToFigma": { ... }` dentro de `"mcpServers"`, no reemplaces todo el archivo.
 
 3. Reinicia Claude Desktop
 4. Usa el modo **Chat** (que soporta herramientas MCP)
@@ -155,19 +92,23 @@ Sustituye `TU_USUARIO` por tu nombre de usuario. Si ya tienes otros servidores M
 
 Cada vez que quieras usar Claude con Figma, necesitas estos tres pasos. El MCP ya está configurado de la instalación, eso no hay que repetirlo.
 
-> **Importante:** El servidor socket se cierra cada vez que sales de Claude Code (`/exit`) o cierras la terminal. Es normal, hay que arrancarlo de nuevo cuando vuelvas.
+> **Importante:** El servidor socket se cierra cada vez que cierras la terminal donde lo ejecutaste. Es normal, hay que arrancarlo de nuevo cuando vuelvas.
 
 ### 1. Arrancar el servidor socket
 
 Abre una terminal y ejecuta:
 
 ```bash
-cd ~/claude-talk-to-figma-mcp && bun socket
+npx claude-talk-to-figma-mcp ~/claude-talk-to-figma-mcp
 ```
 
-(En Windows: usa la ruta correspondiente)
+Alternativa (si ya tienes el plugin descargado):
 
-Si `bun` no se reconoce, usa la ruta completa: `~/.bun/bin/bun socket` (macOS) o `%USERPROFILE%\.bun\bin\bun.exe socket` (Windows).
+```bash
+cd ~/claude-talk-to-figma-mcp && bun run socket
+```
+
+(En Windows: usa la ruta correspondiente, ej: `%USERPROFILE%\claude-talk-to-figma-mcp`)
 
 Deja esta terminal abierta mientras trabajas.
 
@@ -175,9 +116,6 @@ Deja esta terminal abierta mientras trabajas.
 
 1. Abre tu archivo en Figma Desktop
 2. Menú: clic derecho en el canvas → **Plugins** → **Claude MCP Plugin**
-
-> **Nota:** Solo la primera vez necesitas importar el plugin desde el manifest.json. Las siguientes veces aparece directamente en el menú de plugins como cualquier otro plugin.
-
 3. Pulsa **"Connect"** en el panel del plugin
 4. Aparecerá un **código de canal** (ej: `v4f3uiqq`)
 
@@ -192,8 +130,6 @@ Talk to Figma, channel v4f3uiqq
 (Sustituye `v4f3uiqq` por tu código de canal)
 
 **Importante:** Mantén el plugin abierto en Figma durante toda la sesión. Si se cierra o el canal cambia, comparte el nuevo canal con Claude.
-
-El MCP ya está configurado — eso no hay que repetirlo.
 
 ---
 
@@ -219,37 +155,13 @@ El plugin está en desarrollo activo. Estas capacidades se amplían con cada ver
 
 ## Solución de problemas
 
-### Error "bun: command not found"
+### Error "npx: command not found"
 
-Este es el error más frecuente. Ocurre cuando la terminal no reconoce Bun después de instalarlo.
-
-**Solución rápida:** Usa la ruta completa en vez del nombre corto:
-- macOS: `~/.bun/bin/bun` en vez de `bun`
-- Windows: `%USERPROFILE%\.bun\bin\bun.exe` en vez de `bun`
-
-**Para resolverlo de forma permanente:**
-- macOS: ejecuta `exec $SHELL` para recargar la terminal
-- Windows: cierra y vuelve a abrir la terminal o PowerShell
-- Si nada funciona, cierra Cursor completamente y ábrelo de nuevo
-
-### La ruta del servidor MCP no funciona
-
-Si el comando `claude mcp add` da error o el MCP no conecta, puede ser un problema de ruta. Prueba con la ruta completa al archivo del servidor:
-
-```bash
-claude mcp add --transport stdio ClaudeTalkToFigma -- ~/.bun/bin/bun ~/claude-talk-to-figma-mcp/dist/talk_to_figma_mcp/server.js
-```
-
-En Windows:
-```powershell
-claude mcp add --transport stdio ClaudeTalkToFigma -- %USERPROFILE%\.bun\bin\bun.exe %USERPROFILE%\claude-talk-to-figma-mcp\dist\talk_to_figma_mcp\server.js
-```
-
-> **Nota:** Si la ruta `dist/talk_to_figma_mcp/server.js` no existe, prueba con `src/claude_mcp_server/index.ts`. La ruta varía según la versión del plugin.
+Node.js no está instalado. Descárgalo e instálalo desde [nodejs.org](https://nodejs.org/) (versión LTS). Cierra y vuelve a abrir la terminal después de instalar.
 
 ### El servidor socket no arranca
 
-- Verifica que Bun está instalado: `bun --version` (o `~/.bun/bin/bun --version`)
+- Verifica que Node.js está instalado: `node --version`
 - Verifica que el puerto 3055 está libre:
   - macOS: `lsof -i :3055`
   - Windows: `netstat -aon | findstr :3055`
@@ -257,7 +169,7 @@ claude mcp add --transport stdio ClaudeTalkToFigma -- %USERPROFILE%\.bun\bin\bun
 
 ### El plugin de Figma no conecta
 
-- Verifica que el servidor socket está corriendo (terminal abierta con `bun socket`)
+- Verifica que el servidor socket está corriendo (la terminal donde ejecutaste npx debe estar abierta)
 - Verifica que usas **Figma Desktop**, no la versión web
 - Cierra y vuelve a abrir el plugin en Figma
 - Reinicia el servidor socket
@@ -278,7 +190,13 @@ claude mcp add --transport stdio ClaudeTalkToFigma -- %USERPROFILE%\.bun\bin\bun
 
 - Verifica con `claude mcp list`
 - Si no aparece, vuelve a ejecutar el comando `claude mcp add`
-- Verifica que Bun está accesible desde la terminal
+- Si aparece en rojo, verifica que el servidor socket está corriendo
+
+### Archivos del plugin desaparecen (macOS)
+
+Si guardaste el plugin en una carpeta sincronizada con iCloud, macOS puede eliminar los archivos locales para ahorrar espacio. Solución:
+- Clic derecho en la carpeta en Finder → "Download Now"
+- O mejor: mueve el plugin a `~/` (fuera de iCloud)
 
 ---
 
