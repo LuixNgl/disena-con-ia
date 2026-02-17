@@ -130,6 +130,8 @@ STOP: ¿Has ejecutado el comando y vuelto con `claude --continue`?
 
 USER: Sí / Listo / Hecho / [Problema]
 
+ACTION: Al salir con `/exit`, el servidor socket del Paso 1 se ha parado (es normal). Comprobar con `curl -s http://localhost:3055/status`. Si no responde, rearrancarlo en Bash con `run_in_background: true` ejecutando `cd [RUTA_ELEGIDA] && bun run socket`. Esperar a que responda antes de continuar.
+
 ## [Si tiene problemas con el comando MCP]
 
 ACTION: Diagnosticar:
@@ -415,6 +417,7 @@ USER: /sprint-2-3
 - Este comando clona el repo, instala dependencias, construye y arranca el servidor websocket
 - Verificar que el servidor está listo con `curl -s http://localhost:3055/status` — repetir cada 5-10 segundos hasta que responda
 - Si npx pide confirmación interactiva para instalar el paquete, puede que necesite ejecutarse sin background primero. En ese caso, ejecutar normalmente, esperar a que complete, y si bloquea la terminal, matarlo y rearrancar con `cd [RUTA] && bun run socket` en background
+- **El servidor muere al hacer `/exit`:** Cuando el estudiante sale con `/exit` para ejecutar `claude mcp add` y vuelve con `claude --continue`, el servidor socket ya no está corriendo. Es imprescindible rearrancarlo antes de verificar `/mcp` o conectar con Figma
 - Si el servidor se cae durante el sprint, rearrancarlo con: `cd [RUTA_ELEGIDA] && bun run socket` en Bash con `run_in_background: true`
 
 ### Detección de SO
