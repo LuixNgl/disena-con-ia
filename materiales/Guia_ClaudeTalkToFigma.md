@@ -26,10 +26,10 @@ Creado por **Xúlio Zé** (adaptación para Claude) a partir del proyecto origin
 Un solo comando descarga el plugin, instala las dependencias, construye el proyecto y arranca el servidor de conexión:
 
 ```bash
-npx claude-talk-to-figma-mcp ~/claude-talk-to-figma-mcp
+npx claude-talk-to-figma-mcp ~
 ```
 
-Puedes cambiar `~/claude-talk-to-figma-mcp` por la ruta que prefieras.
+El comando crea una subcarpeta `claude-talk-to-figma-mcp/` dentro de la ruta que indiques. Con `~`, el plugin queda en `~/claude-talk-to-figma-mcp/`. Puedes cambiar `~` por otra ruta si lo prefieres.
 
 > **Recomendación:** Guarda el plugin en tu carpeta de inicio (`~/` en macOS/Linux, `%USERPROFILE%` en Windows). Evita rutas con espacios o carpetas sincronizadas con iCloud/OneDrive, ya que pueden causar problemas.
 
@@ -45,9 +45,10 @@ El servidor está listo cuando veas algo como:
 ### 2. Importar el plugin en Figma
 
 1. Abre **Figma Desktop** (no la versión web)
-2. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
-3. Navega hasta: `~/claude-talk-to-figma-mcp/src/claude_mcp_plugin/manifest.json`
-4. Confirma que aparece "Claude MCP Plugin"
+2. Abre o crea cualquier archivo de Figma Design (el menú de plugins solo aparece con un documento abierto)
+3. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
+4. Navega hasta: `~/claude-talk-to-figma-mcp/src/claude_mcp_plugin/manifest.json`
+5. Confirma que aparece "Claude MCP Plugin"
 
 > **Nota:** Solo necesitas importarlo la primera vez. Después aparece directamente en el menú de plugins.
 
@@ -99,7 +100,7 @@ Cada vez que quieras usar Claude con Figma, necesitas estos tres pasos. El MCP y
 Abre una terminal y ejecuta:
 
 ```bash
-npx claude-talk-to-figma-mcp ~/claude-talk-to-figma-mcp
+npx claude-talk-to-figma-mcp ~
 ```
 
 Alternativa (si ya tienes el plugin descargado):
@@ -158,6 +159,10 @@ El plugin está en desarrollo activo. Estas capacidades se amplían con cada ver
 ### Error "npx: command not found"
 
 Node.js no está instalado. Descárgalo e instálalo desde [nodejs.org](https://nodejs.org/) (versión LTS). Cierra y vuelve a abrir la terminal después de instalar.
+
+### Error "Expected manifest.api to have type string"
+
+Has seleccionado el manifest.json equivocado. El archivo correcto está en `src/claude_mcp_plugin/manifest.json` dentro de la carpeta del plugin (no el manifest.json de la raíz).
 
 ### El servidor socket no arranca
 

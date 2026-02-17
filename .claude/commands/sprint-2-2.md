@@ -37,7 +37,7 @@ Pregunta: ¿Dónde quieres guardar el plugin?
 - En tu carpeta de inicio (~/) (Recomendado)
 - Dentro de la carpeta del proyecto
 
-[Según la respuesta, usar esa ubicación para la ruta. Si elige inicio: `~/claude-talk-to-figma-mcp`. Si elige proyecto: usar la ruta del proyecto + `/claude-talk-to-figma-mcp`]
+[Según la respuesta, usar esa ubicación como argumento del comando npx. Si elige inicio: `~`. Si elige proyecto: la ruta del proyecto. El comando npx creará automáticamente una subcarpeta `claude-talk-to-figma-mcp/` dentro de la ruta elegida.]
 
 [**Importante — verificar la ruta elegida:**
 - Si la ruta contiene **espacios** (ej: `Mobile Documents`, `My Documents`), avisar al estudiante: "Esa ruta tiene espacios, lo que puede causar problemas con el plugin. Te recomiendo usar la carpeta de inicio (`~/`) para evitar complicaciones."
@@ -72,7 +72,7 @@ ACTION: Diagnosticar:
 - La carpeta ya existe → preguntar si quiere eliminarla y clonar de nuevo, o usar la existente
 - El servidor no responde → Verificar con `curl -s http://localhost:3055/status`
 - Puerto ocupado → macOS: `lsof -i :3055`. Windows: `netstat -aon | findstr :3055`. Matar el proceso que ocupa el puerto
-- Timeout o proceso parado → Reintentar el comando npx. Si persiste, intentar manualmente: `cd [RUTA_ELEGIDA] && npm install && npm run build && npm run socket`
+- Timeout o proceso parado → Reintentar el comando npx. Si persiste, intentar manualmente: `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && npm install && npm run build && npm run socket`
 
 ---
 
@@ -81,10 +81,11 @@ ACTION: Diagnosticar:
 Ahora viene la parte de Figma. Este plugin no está en la tienda de Figma, por eso lo hemos descargado. Importarlo es sencillo:
 
 1. Abre **Figma Desktop** (importante: la app de escritorio, no la web)
-2. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
-3. Navega hasta la carpeta que descargaste y selecciona el archivo:
-   `[RUTA_ELEGIDA]/src/claude_mcp_plugin/manifest.json`
-4. Confirma que aparece **"Claude MCP Plugin"** en la lista de plugins de desarrollo
+2. Abre o crea cualquier archivo de Figma Design (el menú de plugins solo aparece con un documento abierto)
+3. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
+4. Navega hasta la carpeta del plugin y selecciona el archivo:
+   `[RUTA_ELEGIDA]/claude-talk-to-figma-mcp/src/claude_mcp_plugin/manifest.json`
+5. Confirma que aparece **"Claude MCP Plugin"** en la lista de plugins de desarrollo
 
 **Nota:** Figma guarda la ruta del plugin. Si mueves la carpeta más adelante, tendrás que volver a importarlo en Figma desde la nueva ubicación. Es fácil así que no le des vueltas.
 
@@ -96,7 +97,8 @@ USER: Sí / Lo veo / [Problema]
 
 ACTION: Diagnosticar:
 - No encuentra la opción "Import plugin from manifest..." → Verificar que es Figma Desktop (no web). En la app de escritorio: Plugins → Development → Import plugin from manifest...
-- No encuentra el archivo manifest.json → La ruta correcta es `[RUTA]/src/claude_mcp_plugin/manifest.json`. Ayudar a navegar
+- No encuentra el archivo manifest.json → La ruta correcta es `[RUTA_ELEGIDA]/claude-talk-to-figma-mcp/src/claude_mcp_plugin/manifest.json`. Ayudar a navegar
+- Error "Expected manifest.api to have type string" → El estudiante ha seleccionado el manifest.json equivocado (probablemente el de la raíz del plugin en vez del de `src/claude_mcp_plugin/`). Indicar la ruta correcta
 - Error al importar → Verificar que la descarga del Paso 1 se completó sin errores
 - Usa Figma en el navegador → Necesita la app de escritorio para plugins de desarrollo. Puede descargarla desde figma.com/downloads
 
@@ -130,7 +132,7 @@ STOP: ¿Has ejecutado el comando y vuelto con `claude --continue`?
 
 USER: Sí / Listo / Hecho / [Problema]
 
-ACTION: Al salir con `/exit`, el servidor socket del Paso 1 se ha parado (es normal). Comprobar con `curl -s http://localhost:3055/status`. Si no responde, rearrancarlo en Bash con `run_in_background: true` ejecutando `cd [RUTA_ELEGIDA] && bun run socket`. Esperar a que responda antes de continuar.
+ACTION: Al salir con `/exit`, el servidor socket del Paso 1 se ha parado (es normal). Comprobar con `curl -s http://localhost:3055/status`. Si no responde, rearrancarlo en Bash con `run_in_background: true` ejecutando `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket`. Esperar a que responda antes de continuar.
 
 ## [Si tiene problemas con el comando MCP]
 
@@ -301,7 +303,7 @@ Ahora que ya tienes todo configurado, quiero asegurarme de que puedes usar esto 
 
 Cada vez que quieras usar Claude con Figma, necesitas tres cosas:
 
-1. **El servidor socket corriendo** → Abre una terminal → ejecuta `npx claude-talk-to-figma-mcp [RUTA_ELEGIDA]` (o desde la carpeta del plugin: `cd [RUTA_ELEGIDA] && bun run socket`)
+1. **El servidor socket corriendo** → Abre una terminal → ejecuta `npx claude-talk-to-figma-mcp [RUTA_ELEGIDA]` (o desde la carpeta del plugin: `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket`)
 2. **El plugin abierto en Figma** → Plugins → Development → Claude MCP Plugin → Connect
 3. **Conectar Claude al canal** → Copia el código del plugin y dile a Claude: `Talk to Figma, channel {tu-código}`
 
@@ -416,9 +418,10 @@ USER: /sprint-2-3
 - Ejecutar `npx claude-talk-to-figma-mcp [RUTA]` con Bash `run_in_background: true`
 - Este comando clona el repo, instala dependencias, construye y arranca el servidor websocket
 - Verificar que el servidor está listo con `curl -s http://localhost:3055/status` — repetir cada 5-10 segundos hasta que responda
-- Si npx pide confirmación interactiva para instalar el paquete, puede que necesite ejecutarse sin background primero. En ese caso, ejecutar normalmente, esperar a que complete, y si bloquea la terminal, matarlo y rearrancar con `cd [RUTA] && bun run socket` en background
+- **Ruta del plugin:** El comando npx crea una subcarpeta `claude-talk-to-figma-mcp/` dentro de la ruta elegida. Si el estudiante elige `~`, el plugin queda en `~/claude-talk-to-figma-mcp/`. Todas las rutas a archivos del plugin deben incluir esta subcarpeta
+- Si npx pide confirmación interactiva para instalar el paquete, puede que necesite ejecutarse sin background primero. En ese caso, ejecutar normalmente, esperar a que complete, y si bloquea la terminal, matarlo y rearrancar con `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket` en background
 - **El servidor muere al hacer `/exit`:** Cuando el estudiante sale con `/exit` para ejecutar `claude mcp add` y vuelve con `claude --continue`, el servidor socket ya no está corriendo. Es imprescindible rearrancarlo antes de verificar `/mcp` o conectar con Figma
-- Si el servidor se cae durante el sprint, rearrancarlo con: `cd [RUTA_ELEGIDA] && bun run socket` en Bash con `run_in_background: true`
+- Si el servidor se cae durante el sprint, rearrancarlo con: `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket` en Bash con `run_in_background: true`
 
 ### Detección de SO
 - El comando npx es cross-platform, no necesita adaptación por SO
