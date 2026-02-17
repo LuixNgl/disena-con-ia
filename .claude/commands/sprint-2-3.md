@@ -100,6 +100,7 @@ Aquí tienes algunas herramientas que merece la pena investigar por tu cuenta:
 - **[FlutterFlow](https://flutterflow.io)** — Apps no-code con interfaz visual
 - **[Manus](https://manus.im)** — IA centrada en producto
 - **ai.to.design** — El nuevo plugin de los creadores de html.to.design para trabajar con prompts directamente en Figma. Lo lanzan a comienzos de 2026 y las críticas iniciales no son positivas, pero revisa cómo evoluciona
+- **[Figma Console MCP](https://github.com/southleft/figma-console-mcp)** — Otra opción para conectar IA con Figma, más orientada a design systems: gestión de variables, tokens, componentes y debugging de plugins
 - **Otros IDEs** — VS Code, Windsurf, Google Antigravity... el ecosistema crece continuamente
 - **Notion + Figma Make** — Prototipar PRDs (Product Requirements Documents) automáticamente ([ver vídeo](https://www.youtube.com/watch?v=Pbe7rC2fMJg&list=PLMs9KUTRYQvDjTZxB8kvHDU5eMY2GNaTX&index=20))
 

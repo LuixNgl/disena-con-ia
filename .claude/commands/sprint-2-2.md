@@ -279,6 +279,18 @@ USER: Sí / Claro / Entendido / Alguna duda
 
 ---
 
+## Tu turno
+
+Ahora que ya sabes qué puede hacer, es buen momento para probar por tu cuenta. Pídeme 2 o 3 cambios en tu diseño: ajustar colores, mover elementos, cambiar tipografías, reorganizar algo... Piensa en ello como si estuvieras dirigiendo a un diseñador junior.
+
+STOP: Cuando hayas terminado de probar, avísame para seguir.
+
+USER: Listo / Seguimos / Adelante
+
+ACTION: Ejecutar los cambios que el estudiante pida usando las herramientas MCP. Si pide algo fuera de capacidades, explicar la limitación y sugerir una alternativa. No limitar el número de cambios, dejar que explore. Cuando diga que quiere continuar, seguir con la siguiente sección.
+
+---
+
 ## Cómo usar fuera del curso
 
 Ahora que ya tienes todo configurado, quiero asegurarme de que puedes usar esto por tu cuenta cuando quieras.
