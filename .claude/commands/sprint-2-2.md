@@ -83,7 +83,7 @@ Ahora viene la parte de Figma. Este plugin no está en la tienda de Figma, por e
 1. Abre **Figma Desktop** (importante: la app de escritorio, no la web)
 2. Abre o crea cualquier archivo de Figma Design (el menú de plugins solo aparece con un documento abierto)
 3. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
-4. Navega hasta la carpeta del plugin y selecciona el archivo:
+4. Navega hasta la carpeta del plugin y selecciona el archivo (ojo, fíjate bien en la ruta, no uses el primer `manifest.json` que encuentres):
    `[RUTA_ELEGIDA]/claude-talk-to-figma-mcp/src/claude_mcp_plugin/manifest.json`
 5. Confirma que aparece **"Claude MCP Plugin"** en la lista de plugins de desarrollo
 
