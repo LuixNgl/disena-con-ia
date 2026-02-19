@@ -98,9 +98,9 @@ Con npm instalado, ejecuta:
 npm install -g @anthropic-ai/claude-code
 ```
 
-Espera a que termine la instalación. Después, escribe `exit` en la terminal para cerrarlo y abre uno nuevo con **View** → **Terminal** para que reconozca el nuevo comando.
+Cuando termine, escribe `exit` para reiniciar la terminal y que reconozca el nuevo comando.
 
-Para verificar que se ha instalado correctamente, escribe en la terminal:
+Para verificar que se ha instalado correctamente, escribe:
 
 ```
 claude --version
