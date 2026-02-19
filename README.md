@@ -88,9 +88,10 @@ curl -fsSL https://nodejs.org/install.sh | bash
 ```
 winget install -e --id OpenJS.NodeJS.LTS
 ```
-Cuando termine, abre una nueva terminal con **View** → **Terminal** para que reconozca Node.js.
 
-> Si ves el error "winget: command not found", descarga Node.js manualmente desde [nodejs.org](https://nodejs.org) — pulsa el botón **LTS** y sigue el asistente con los valores por defecto. Cuando termine, abre una nueva terminal con **View** → **Terminal**.
+> Si ves el error "winget: command not found", descarga Node.js manualmente desde [nodejs.org](https://nodejs.org) — pulsa el botón **LTS** y sigue el asistente con los valores por defecto.
+
+Cuando termine, cierra Cursor completamente y ábrelo de nuevo. Después abre la terminal (**View** → **Terminal**) y continúa con el comando que viene a continuación.
 
 Con npm instalado, ejecuta:
 ```
