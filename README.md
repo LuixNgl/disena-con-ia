@@ -84,7 +84,13 @@ irm https://claude.ai/install.ps1 | iex
 curl -fsSL https://nodejs.org/install.sh | bash
 ```
 
-*Windows:* Descarga e instala Node.js desde [nodejs.org](https://nodejs.org) (la versión LTS). Después cierra y vuelve a abrir la terminal de Cursor.
+*Windows:*
+```
+winget install -e --id OpenJS.NodeJS.LTS
+```
+Cuando termine, abre una nueva terminal con **View** → **Terminal** para que reconozca Node.js.
+
+> Si ves el error "winget: command not found", descarga Node.js manualmente desde [nodejs.org](https://nodejs.org) — pulsa el botón **LTS** y sigue el asistente con los valores por defecto. Cuando termine, abre una nueva terminal con **View** → **Terminal**.
 
 Con npm instalado, ejecuta:
 ```
