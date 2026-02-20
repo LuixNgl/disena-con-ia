@@ -143,6 +143,7 @@ Pregunta 5: ¿Qué familia de colores prefieres?
 
 Pregunta 6: ¿Tienes alguna web o app de referencia para el estilo visual?
 - No, confío en tu criterio
+- Estilo de librería de componentes (shadcn/ui, Radix) — Accesible, funcional, bien estructurado
 - Sí, tengo una referencia (especificar URL)
 
 [Esperar respuestas del usuario]
@@ -311,7 +312,8 @@ USER: /sprint-2-1
 - Desktop es la recomendación (los usuarios empiezan su jornada abriendo el portátil), pero mobile es válido si el usuario lo prefiere
 - La elección de dispositivo determina qué pantalla única se genera — no diseñamos ambas versiones en el MVP
 - El estilo depende del target — para PYMES, "minimalista y limpio" o "cálido y cercano" suelen funcionar bien
-- Si el usuario tiene una referencia web, incorpórala en el prompt
+- Si el usuario elige shadcn/ui / Radix como referencia, úsalo como **inspiración visual** en la Art Direction (limpio, accesible, bien estructurado) — no como dependencia técnica. El HTML generado debe ser siempre HTML/CSS puro, nunca React ni JSX.
+- Si el usuario tiene una referencia web propia, incorpórala en el prompt
 
 ### Sobre el prompt de diseño
 - Asegúrate de incluir TODOS los requisitos técnicos para html.to.design:
