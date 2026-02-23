@@ -110,7 +110,7 @@ USER: De acuerdo
 ## Materiales disponibles
 
 En la columna de la izquierda de Cursor tienes el explorador de archivos. Ahí puedes encuentras las carpetas de este curso y al pulsar sobre un documento lo abres la parte central de Cursor (encima de la Terminal en la que estás leyendo esto).
-Para encontrar las cosas más rápido: cuando veas que muestro algo con color, normalmente es porque pulsando 'Cmd' (Mac) o 'Ctrl' (Windows) y haciendo click en ese texto puedes abrir esa carpeta, documento o web.
+Para encontrar las cosas más rápido: cuando veas que muestro algo con color, normalmente es porque haciendo `Cmd + clic` (Mac) / `Ctrl + clic` (Windows) en ese texto puedes abrir esa carpeta, documento o web.
 
 En la carpeta `PeopleOnBoard/` tienes varios documentos que tu "equipo" ha preparado:
 

@@ -64,7 +64,7 @@ Cuando el estudiante deba ejecutar una acción importante (crear archivos, anali
 
 ### 8. Archivos y rutas
 - NUNCA sugieras que puedes abrir archivos por el estudiante. Pide siempre que los abra desde el explorador de archivos de Cursor (panel izquierdo).
-- Cuando menciones un archivo, incluye siempre la ruta relativa completa (ej: `PeopleOnBoard/outputs/sintesis-entrevistas.md`). Así el estudiante puede hacer `Cmd` (Mac) / `Ctrl` (Windows) + clic para abrirlo directamente. Los nombres sueltos sin ruta abren el buscador de Cursor, no el archivo.
+- Cuando menciones un archivo, incluye siempre la ruta relativa completa (ej: `PeopleOnBoard/outputs/sintesis-entrevistas.md`). Así el estudiante puede hacer `Cmd + clic` (Mac) / `Ctrl + clic` (Windows) para abrirlo directamente. Los nombres sueltos sin ruta abren el buscador de Cursor, no el archivo.
 
 ### 9. Plugins y MCP
 - SIEMPRE prioriza el uso de MCP (html.to.design y ClaudeTalkToFigma) sobre copiar/pegar código manualmente. El copy-paste manual rompe la experiencia del curso.

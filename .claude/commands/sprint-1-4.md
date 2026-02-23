@@ -34,19 +34,19 @@ ACTION: Lee los archivos `PeopleOnBoard/outputs/sintesis-entrevistas.md` y `Peop
 
 Antes de que tomes decisiones, ¿quieres ver la template que usaremos para el prompt de diseño?
 
-Está en `materiales/Template_Prompt_Diseno.md`. Puedes abrirla desde el explorador lateral o pedirme que la abra.
+Está en `materiales/Template_Prompt_Diseno.md`. Ábrela desde el explorador lateral izquierdo, o con `Cmd + clic` en la ruta (Mac) / `Ctrl + clic` (Windows).
 
 Hay algo que quizá quieras ajustar: la template tiene **Inter** como tipografía por defecto. Podemos cambiarla por un campo abierto para que elijas otra fuente más adelante.
 
-STOP: ¿Abro la template para revisarla y la ajustamos?
+STOP: ¿La abrimos y la revisamos juntos?
 
-USER: Sí / Ábrela / No, continuemos
+USER: Sí / Claro / No, continuemos
 
 ---
 
 ## [Si quiere revisar la template]
 
-ACTION: Abre el archivo `materiales/Template_Prompt_Diseno.md` en el editor
+ACTION: Indica al estudiante que abra `materiales/Template_Prompt_Diseno.md` desde el explorador lateral o con `Cmd + clic` (Mac) / `Ctrl + clic` (Windows) en la ruta. Espera a que confirme que la tiene abierta.
 
 Ahí la tienes. Busca la sección de tipografía — verás que tiene Inter hardcodeada.
 
@@ -206,7 +206,7 @@ USER: Sí / Veámoslo / Muéstramelo
 
 ## [Si quiere revisar]
 
-ACTION: Abre `PeopleOnBoard/outputs/prompt-diseno.md` en el editor
+ACTION: Indica al estudiante que abra `PeopleOnBoard/outputs/prompt-diseno.md` desde el explorador lateral o con `Cmd + clic` (Mac) / `Ctrl + clic` (Windows) en la ruta. Espera a que confirme que lo tiene abierto.
 
 Recuerda: clic derecho en la pestaña → **Open Preview** para verlo con formato.
 

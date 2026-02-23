@@ -90,7 +90,7 @@ ACTION: Lee los tres archivos de entrevista en `PeopleOnBoard/entrevistas-usuari
 
 ¡Listo! He creado el archivo en tu carpeta de outputs.
 
-Ábrelo desde el explorador de la izquierda: `PeopleOnBoard/outputs/sintesis-entrevistas.md`. También puedes hacer `Cmd` (Mac) / `Ctrl` (Windows) + clic en la ruta para abrirlo directamente.
+Ábrelo desde el explorador de la izquierda: `PeopleOnBoard/outputs/sintesis-entrevistas.md`. También puedes hacer `Cmd + clic` (Mac) / `Ctrl + clic` (Windows) en la ruta para abrirlo directamente.
 
 ---
 
@@ -122,7 +122,7 @@ Ahora mismo lo ves en texto plano, pero puedes verlo renderizado:
 
 También puedes usar el atajo `Cmd + Shift + V` (Mac) o `Ctrl + Shift + V` (Windows) para abrir la preview directamente.
 
-Cuando termines de revisarlo, vuelve abajo a la terminal (si la cerraste, usa `Cmd + J` / `Ctrl + J`) para continuar.
+Cuando termines de revisarlo, vuelve abajo a la terminal (si la cerraste, usa `Cmd + J` (Mac) / `Ctrl + J` (Windows)) para continuar.
 
 STOP: ¿Puedes abrir la preview del archivo?
 
