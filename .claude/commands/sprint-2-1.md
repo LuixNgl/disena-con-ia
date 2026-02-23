@@ -46,6 +46,8 @@ ACTION: Lee `PeopleOnBoard/outputs/prompt-diseno.md` y genera 4 archivos HTML en
 - Cada archivo es una propuesta completa de la pantalla de fichaje de PeopleOnBoard
 - Cada una con un estilo visual claramente distinto (basados en la dirección artística del prompt pero con variaciones de personalidad)
 - Todas cumplen los requisitos técnicos del prompt: pixel perfect, base-8, light+dark mode, WCAG 2.1 AA, variables CSS tokenizadas, HTML semántico
+- **Layout responsive:** ancho 100% del viewport para que se vea a pantalla completa en el navegador — da una sensación más realista. El ancho fijo (1440px desktop / 390px mobile) se aplicará antes de importar a Figma
+- **Toggle dark/light:** incluye un pequeño botón flotante (esquina inferior derecha) que alterna entre `class="dark"` y `class="light"` en `<html>` — el estudiante puede probar ambos modos sin cambiar la configuración del sistema
 - Genera solo para el dispositivo indicado en el prompt del estudiante (mobile o desktop), no ambos
 - Los archivos deben ser HTML completo con CSS embebido, funcional al abrir en navegador
 - Nombres: opcion-1.html, opcion-2.html, opcion-3.html, opcion-4.html
@@ -70,6 +72,8 @@ ACTION: Abre los 4 archivos HTML en el navegador usando bash open
 Tómate un momento para mirar las 4 opciones. Fíjate en la estructura, los colores, la tipografía y cómo se presenta el flujo de fichaje. Si tu navegador tiene modo oscuro, también podrás comparar el dark mode.
 
 Cada propuesta es una interpretación diferente de tu briefing. Las 4 cumplen los mismos requisitos técnicos, la diferencia está en la personalidad visual.
+
+Usa el **botón de alternancia** de la esquina inferior para cambiar entre modo claro y oscuro directamente — sin necesidad de cambiar la configuración del sistema.
 
 ¿Con cuál seguimos? Puedes:
 - **Elegir una** y avanzar (la ajustaremos en Figma)
@@ -295,9 +299,12 @@ ACTION: Ayuda al estudiante:
 
 ## Elegir modo de color
 
-Antes de importar, una decisión rápida.
+Antes de importar, preparamos el archivo para Figma.
 
-Ya has visto que tu diseño tiene ambos modos: claro y oscuro (según la configuración de tu sistema operativo). Pero html.to.design solo importará **uno de los dos** a Figma.
+Hasta ahora las propuestas han sido responsivas y con toggle para cambiar de modo — ideal para comparar. Para la importación hay que fijar dos cosas:
+
+1. **Ancho fijo** — 1440px (desktop) o 390px (mobile), según tu elección en el Sprint 1.4
+2. **Modo de color** — html.to.design importa uno a la vez
 
 ACTION: Usa AskUserQuestion:
 
@@ -307,13 +314,21 @@ Pregunta: ¿Con qué modo de color prefieres trabajar en Figma?
 
 [Si elige dark mode]
 
-ACTION: Modifica `PeopleOnBoard/outputs/html-propuestas/propuesta-final.html`: añade `class="dark"` al elemento `<html>` para que html.to.design importe el modo oscuro. Si ya tiene `class="light"`, cámbialo por `class="dark"`.
+ACTION: Modifica `PeopleOnBoard/outputs/html-propuestas/propuesta-final.html`:
+- Añade `class="dark"` al elemento `<html>` (o cambia `class="light"` por `class="dark"`)
+- Elimina el botón toggle dark/light y su JavaScript
+- Establece el ancho fijo del diseño según el prompt (1440px para desktop, 390px para mobile)
 
-Listo, he configurado el modo oscuro como predeterminado para la importación.
+Listo — modo oscuro configurado, toggle eliminado, ancho fijado.
 
 [Si elige light mode]
 
-ACTION: Modifica `PeopleOnBoard/outputs/html-propuestas/propuesta-final.html`: añade `class="light"` al elemento `<html>` para confirmar el modo claro como predeterminado.
+ACTION: Modifica `PeopleOnBoard/outputs/html-propuestas/propuesta-final.html`:
+- Añade `class="light"` al elemento `<html>`
+- Elimina el botón toggle dark/light y su JavaScript
+- Establece el ancho fijo del diseño según el prompt (1440px para desktop, 390px para mobile)
+
+Listo — modo claro configurado, toggle eliminado, ancho fijado.
 
 ---
 
@@ -437,6 +452,8 @@ USER: /sprint-2-2
 - Las 4 opciones deben ser **visualmente distintas**, no variaciones sutiles del mismo diseño
 - Genera solo para el dispositivo indicado en el prompt del estudiante (mobile o desktop) — no ambos
 - Cumple estrictamente todos los requisitos técnicos: base-8, variables CSS, accesibilidad, light+dark mode con `prefers-color-scheme` y soporte para clases en `<html>` que sobreescriban el media query
+- **Layout responsive:** usa `width: 100%` para que las propuestas llenen el viewport en el navegador. El ancho fijo se aplica antes de importar a Figma
+- **Botón toggle:** incluye un botón flotante discreto (esquina inferior derecha) para alternar dark/light. Actúa sobre `class="dark"` / `class="light"` en `<html>`. Eliminarlo al preparar `propuesta-final.html` para Figma
 - Los archivos deben ser HTML completo y funcional, que se vean bien al abrir en navegador
 - Avisa antes de crear cada archivo para que el estudiante apruebe el permiso en Cursor
 
@@ -461,8 +478,8 @@ USER: /sprint-2-2
 - Con la configuración recomendada activada, el plugin importa: auto-layout, variables y estilos locales, nombres de capa del HTML, componentes (hover e iconos), y hyperlinks
 - Las **variables creadas** pueden tener naming genérico (basado en valores, no semántico). Es normal y se puede mejorar después
 - El plugin puede crear **Text Styles y Color Styles** además de variables
-- Solo se importa **un modo de color**. Las propuestas usan `prefers-color-scheme` (para preview en navegador), pero antes de importar se añade `class="light"` o `class="dark"` al `<html>` para forzar el modo elegido
-- Antes de importar, pregunta al estudiante qué modo prefiere y ajusta la clase en el `<html>` de propuesta-final.html
+- Solo se importa **un modo de color**. El paso "Elegir modo de color" se encarga de todo: fija el modo, elimina el toggle y establece el ancho fijo, todo antes de la importación
+- El botón toggle es solo para preview en navegador — eliminarlo siempre de `propuesta-final.html` antes de importar a Figma
 - Lo que NO importa: un Design System completo (componentes maestros con todas sus variantes, documentación)
 - Si la importación sale incompleta, puede ser un HTML demasiado extenso — intentar simplificar o dividir
 - Si el estudiante quiere hacer cambios manuales en Figma, déjale — pero redirige suavemente hacia el Sprint 2.2
