@@ -28,8 +28,8 @@ ACTION: Ejecuta en Bash (como un solo bloque):
     # Configurar el remoto si no existe
     git remote get-url origin 2>/dev/null || git remote add origin https://github.com/LuixNgl/disena-con-ia.git
 
-    # Descargar los últimos cambios
-    git fetch origin
+    # Descargar los últimos cambios (shallow clone — más rápido, no necesitamos el historial completo)
+    git fetch --depth 1 origin
 
     # Aplicar actualizaciones — nunca toca outputs/
     git checkout FETCH_HEAD -- .claude/ materiales/ PeopleOnBoard/contexto-empresa/ PeopleOnBoard/entrevistas-usuario/ README.md 2>/dev/null; echo "COMPLETADO"
