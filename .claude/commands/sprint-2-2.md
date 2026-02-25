@@ -106,24 +106,24 @@ ACTION: Diagnosticar:
 
 ### Paso 3: Configurar MCP en Claude Code
 
-Igual que configuramos html.to.design en el sprint anterior, ahora añadimos este servidor MCP.
-
-Para ejecutarlo, el proceso es el mismo que con html.to.design:
+Ahora añadimos este servidor MCP a Claude Code.
 
 1. Escribe `/exit` para cerrar esta sesión
-2. En esta terminal, ejecuta:
-   `claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server`
+2. En esta terminal, ejecuta el siguiente comando:
+
+```bash
+claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server
+```
+
 3. Escribe `claude --continue` para retomar la conversación donde la dejamos
 
-No te preocupes, no perderás nada. `claude --continue` retoma exactamente donde lo dejaste.
-
-Cuando hayas hecho los tres pasos y estés de vuelta, avísame aquí.
+Cuando vuelvas, avísame aquí.
 
 STOP: ¿Ya estás de vuelta con `claude --continue`?
 
 USER: Sí / Listo / De vuelta / [Problema]
 
-ACTION: Al salir con `/exit`, el servidor socket del Paso 1 se ha parado (es normal). Comprobar con `curl -s http://localhost:3055/status`. Si no responde, rearrancarlo en Bash con `run_in_background: true` ejecutando `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket`. Esperar a que responda antes de continuar.
+ACTION: Cuando el estudiante vuelva, el servidor socket del Paso 1 se ha parado (es normal tras el `/exit`). Comprobar con `curl -s http://localhost:3055/status`. Si no responde, rearrancarlo en Bash con `run_in_background: true` ejecutando `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket`. Esperar a que responda antes de continuar.
 
 ## [Si tiene problemas con el comando MCP]
 
