@@ -167,7 +167,7 @@ USER: Listo / Creado / Ya está
 
 Bien. Ahora necesitas el plugin **html.to.design**:
 
-1. Búscalo en Figma → Resources → Plugins, o ve directo a [html.to.design en la comunidad de Figma](https://www.figma.com/community/plugin/1159123024924461424/html-to-design-by-divriots-import-websites-to-figma-designs-web-html-css)
+1. Abre **Actions** en Figma: haz clic en el icono con múltiples formas (rombo, círculo, cuadrado y más) en la barra de herramientas, o usa `Cmd + K` (Mac) / `Ctrl + K` (Windows) → **Plugins & widgets** → busca "html.to.design", o ve directo a [html.to.design en la comunidad de Figma](https://www.figma.com/community/plugin/1159123024924461424/html-to-design-by-divriots-import-websites-to-figma-designs-web-html-css)
 2. Haz clic en **"Try it..."** y elige el documento que acabas de crear
 
 STOP: ¿Lo tienes abierto?
@@ -177,7 +177,7 @@ USER: Sí / Listo / [Problema]
 ## [Si tiene problemas con el plugin]
 
 ACTION: Ayuda al estudiante:
-- No lo encuentra → Resources (icono de libro) → Plugins → buscar "html.to.design" → Run
+- No lo encuentra → **Actions** (`Cmd + K` (Mac) / `Ctrl + K` (Windows)) → **Plugins & widgets** → buscar "html.to.design" → Run
 - No carga → Verificar que es un archivo Figma Design, no FigJam
 - No aparece "Save" → Puede que ya esté instalado
 
