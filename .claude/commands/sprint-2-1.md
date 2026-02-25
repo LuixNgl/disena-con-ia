@@ -221,22 +221,19 @@ USER: [URL del plugin]
 
 ---
 
-ACTION: El estudiante pega una URL. Valida que empiece por `https://h2d-mcp.divriots.com/` y termine en `/mcp`. Si el formato es correcto, genera el comando exacto y muéstralo al estudiante:
+ACTION: El estudiante pega una URL. Valida que empiece por `https://h2d-mcp.divriots.com/` y termine en `/mcp`. Si el formato es correcto, continúa con los pasos a continuación, incluyendo el comando exacto en el paso 2. Si NO es correcto: pregunta si ha copiado la URL correcta (primer bloque, pestaña "Other") y ayúdale a encontrarla.
+
+---
+
+URL confirmada. Para configurarlo, necesitas salir de Claude Code un momento y volver:
+
+1. Escribe `/exit` para cerrar esta sesión
+2. En esta terminal, ejecuta el siguiente comando:
 
 ```
 claude mcp add --transport http html-to-design "[URL_DEL_ESTUDIANTE]"
 ```
 
-Si el formato NO es correcto:
-- Pregunta si ha copiado la URL correcta (primer bloque, pestaña "Other")
-- Ayúdale a encontrar la URL correcta en el plugin
-
----
-
-Para ejecutar este comando, necesitas salir de Claude Code momentáneamente y volver a entrar:
-
-1. Escribe `/exit` para cerrar esta sesión
-2. En la terminal, ejecuta el comando: [repite aquí el comando exacto con la URL del estudiante que generaste en el paso anterior]
 3. Escribe `claude --continue` para retomar la conversación donde la dejamos
 
 No te preocupes, no perderás nada. `claude --continue` retoma exactamente donde lo dejaste.
