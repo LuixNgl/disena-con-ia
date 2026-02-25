@@ -296,12 +296,9 @@ ACTION: Ayuda al estudiante:
 
 ## Elegir modo de color
 
-Antes de importar, preparamos el archivo para Figma.
+Antes de importar, una decisión rápida.
 
-Hasta ahora las propuestas han sido responsivas y con toggle para cambiar de modo — ideal para comparar. Para la importación hay que fijar dos cosas:
-
-1. **Ancho fijo** — 1440px (desktop) o 390px (mobile), según tu elección en el Sprint 1.4
-2. **Modo de color** — html.to.design importa uno a la vez
+Has estado usando el toggle para comparar modos — ahora hay que fijar uno solo. html.to.design importa uno a la vez, así que estableceremos el modo elegido y eliminaremos las referencias al otro y el toggle.
 
 ACTION: Usa AskUserQuestion:
 
@@ -313,19 +310,19 @@ Pregunta: ¿Con qué modo de color prefieres trabajar en Figma?
 
 ACTION: Modifica `PeopleOnBoard/outputs/html-propuestas/propuesta-final.html`:
 - Añade `class="dark"` al elemento `<html>` (o cambia `class="light"` por `class="dark"`)
+- Elimina el CSS y las variables del modo claro (las reglas de la clase `.light` y el media query `prefers-color-scheme: light` si existe)
 - Elimina el botón toggle dark/light y su JavaScript
-- Establece el ancho fijo del diseño según el prompt (1440px para desktop, 390px para mobile)
 
-Listo — modo oscuro configurado, toggle eliminado, ancho fijado.
+Listo — modo oscuro configurado, referencias al modo claro eliminadas, toggle eliminado.
 
 [Si elige light mode]
 
 ACTION: Modifica `PeopleOnBoard/outputs/html-propuestas/propuesta-final.html`:
-- Añade `class="light"` al elemento `<html>`
+- Añade `class="light"` al elemento `<html>` (o cambia `class="dark"` por `class="light"`)
+- Elimina el CSS y las variables del modo oscuro (las reglas de la clase `.dark` y el media query `prefers-color-scheme: dark` si existe)
 - Elimina el botón toggle dark/light y su JavaScript
-- Establece el ancho fijo del diseño según el prompt (1440px para desktop, 390px para mobile)
 
-Listo — modo claro configurado, toggle eliminado, ancho fijado.
+Listo — modo claro configurado, referencias al modo oscuro eliminadas, toggle eliminado.
 
 ---
 
@@ -475,8 +472,9 @@ USER: /sprint-2-2
 - Con la configuración recomendada activada, el plugin importa: auto-layout, variables y estilos locales, nombres de capa del HTML, componentes (hover e iconos), y hyperlinks
 - Las **variables creadas** pueden tener naming genérico (basado en valores, no semántico). Es normal y se puede mejorar después
 - El plugin puede crear **Text Styles y Color Styles** además de variables
-- Solo se importa **un modo de color**. El paso "Elegir modo de color" se encarga de todo: fija el modo, elimina el toggle y establece el ancho fijo, todo antes de la importación
+- Solo se importa **un modo de color**. El paso "Elegir modo de color" se encarga de todo: fija el modo elegido, elimina el CSS del modo no elegido y elimina el toggle — todo antes de la importación
 - El botón toggle es solo para preview en navegador — eliminarlo siempre de `propuesta-final.html` antes de importar a Figma
+- NO establecer un ancho fijo antes de importar — el layout responsive funciona mejor con el plugin
 - Lo que NO importa: un Design System completo (componentes maestros con todas sus variantes, documentación)
 - Si la importación sale incompleta, puede ser un HTML demasiado extenso — intentar simplificar o dividir
 - Si el estudiante quiere hacer cambios manuales en Figma, déjale — pero redirige suavemente hacia el Sprint 2.2
