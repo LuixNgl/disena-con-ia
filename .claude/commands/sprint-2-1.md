@@ -238,9 +238,11 @@ claude mcp add --transport http html-to-design "[URL_DEL_ESTUDIANTE]"
 
 No te preocupes, no perderás nada. `claude --continue` retoma exactamente donde lo dejaste.
 
-STOP: ¿Has ejecutado el comando y vuelto con `claude --continue`?
+Cuando hayas hecho los tres pasos y estés de vuelta, avísame aquí.
 
-USER: Sí / Listo / Hecho / [Problema]
+STOP: ¿Ya estás de vuelta con `claude --continue`?
+
+USER: Sí / Listo / De vuelta / [Problema]
 
 ## [Si tiene problemas con el comando MCP]
 

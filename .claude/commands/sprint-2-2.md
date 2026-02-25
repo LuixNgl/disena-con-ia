@@ -117,9 +117,11 @@ Para ejecutarlo, el proceso es el mismo que con html.to.design:
 
 No te preocupes, no perderás nada. `claude --continue` retoma exactamente donde lo dejaste.
 
-STOP: ¿Has ejecutado el comando y vuelto con `claude --continue`?
+Cuando hayas hecho los tres pasos y estés de vuelta, avísame aquí.
 
-USER: Sí / Listo / Hecho / [Problema]
+STOP: ¿Ya estás de vuelta con `claude --continue`?
+
+USER: Sí / Listo / De vuelta / [Problema]
 
 ACTION: Al salir con `/exit`, el servidor socket del Paso 1 se ha parado (es normal). Comprobar con `curl -s http://localhost:3055/status`. Si no responde, rearrancarlo en Bash con `run_in_background: true` ejecutando `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket`. Esperar a que responda antes de continuar.
 
