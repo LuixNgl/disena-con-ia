@@ -168,7 +168,7 @@ USER: Listo / Creado / Ya está
 Bien. Ahora necesitas el plugin **html.to.design**:
 
 1. Abre **Actions** en Figma: haz clic en el icono con múltiples formas (rombo, círculo, cuadrado y más) en la barra de herramientas, o usa `Cmd + K` (Mac) / `Ctrl + K` (Windows) → **Plugins & widgets** → busca "html.to.design", o ve directo a [html.to.design en la comunidad de Figma](https://www.figma.com/community/plugin/1159123024924461424/html-to-design-by-divriots-import-websites-to-figma-designs-web-html-css)
-2. Haz clic en **"Try it..."** y elige el documento que acabas de crear
+2. Ábrelo. Como ya tienes el archivo PeopleOnBoard abierto en Figma, se cargará directamente ahí
 
 STOP: ¿Lo tienes abierto?
 
