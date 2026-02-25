@@ -108,22 +108,11 @@ ACTION: Diagnosticar:
 
 Igual que configuramos html.to.design en el sprint anterior, ahora añadimos este servidor MCP.
 
-Este es el comando:
-
-```bash
-claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server
-```
-
----
-
 Para ejecutarlo, el proceso es el mismo que con html.to.design:
 
 1. Escribe `/exit` para cerrar esta sesión
-2. En la terminal, ejecuta:
-
-ACTION: Repite aquí el comando exacto listo para copiar y pegar:
-`claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server`
-
+2. En esta terminal, ejecuta:
+   `claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server`
 3. Escribe `claude --continue` para retomar la conversación donde la dejamos
 
 No te preocupes, no perderás nada. `claude --continue` retoma exactamente donde lo dejaste.
