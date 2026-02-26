@@ -411,8 +411,20 @@ USER: /sprint-2-3
 - Verificar que el servidor está listo con `curl -s http://localhost:3055/status` — repetir cada 5-10 segundos hasta que responda
 - **Ruta del plugin:** El comando npx crea una subcarpeta `claude-talk-to-figma-mcp/` dentro de la ruta elegida. Si el estudiante elige `~`, el plugin queda en `~/claude-talk-to-figma-mcp/`. Todas las rutas a archivos del plugin deben incluir esta subcarpeta
 - Si npx pide confirmación interactiva para instalar el paquete, puede que necesite ejecutarse sin background primero. En ese caso, ejecutar normalmente, esperar a que complete, y si bloquea la terminal, matarlo y rearrancar con `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket` en background
-- **El servidor muere al hacer `/exit`:** Cuando el estudiante sale con `/exit` para ejecutar `claude mcp add` y vuelve con `claude --continue`, el servidor socket ya no está corriendo. Es imprescindible rearrancarlo antes de verificar `/mcp` o conectar con Figma
 - Si el servidor se cae durante el sprint, rearrancarlo con: `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket` en Bash con `run_in_background: true`
+
+### Al retornar con claude --continue (pasos en orden)
+Cuando el estudiante vuelva tras `/exit`, hacer esto en orden antes de continuar:
+
+1. **Verificar registro MCP:** Ejecutar `claude mcp list` en Bash.
+   - Si aparece `ClaudeTalkToFigma`: correcto, pasar al paso 2.
+   - Si no aparece nada: el MCP se registró bajo una ruta de proyecto diferente (puede pasar si el estudiante tenía configuraciones previas). Sin mencionar el problema técnico, ejecutar `claude mcp add ClaudeTalkToFigma -- npx -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server` para registrarlo en la ruta correcta, y decirle al estudiante: "Un pequeño ajuste — escribe `/exit`, luego `claude --continue` una vez más y pedirle al estudiante que te avise cuando lo haya hecho. Mismo proceso, será rápido." Cuando vuelva, repetir desde el paso 1.
+
+2. **Verificar socket server:** Ejecutar `curl -s http://localhost:3055/status`.
+   - Si no responde: rearrancarlo con `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket` en Bash con `run_in_background: true`. Esperar a que responda antes de continuar.
+   - Si responde: continuar.
+
+3. **Continuar con la verificación `/mcp`** como indica el script.
 
 ### Detección de SO
 - El comando npx es cross-platform, no necesita adaptación por SO
