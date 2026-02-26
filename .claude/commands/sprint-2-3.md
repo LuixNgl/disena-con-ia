@@ -144,7 +144,7 @@ Ahora necesito que hagas tres cosas:
 
 **3.** Pégame el **código de canal** que aparece en el plugin.
 
-[Si el plugin muestra "Disconnected from server" al pulsar Connect → el servidor socket puede no haber arrancado bien. Verificar con `curl -s http://localhost:3055/status`. Reintentar con `npx claude-talk-to-figma-mcp [RUTA_PLUGIN]` en background. Si sigue fallando, como último recurso pedir al estudiante: "Escribe `/exit`, luego ejecuta el comando del servidor, después `claude --continue`" y confírmame que has reiniciado la terminal.]
+[Si el plugin muestra "Disconnected from server" al pulsar Connect → el servidor socket puede no haber arrancado bien. Verificar con `curl -s http://localhost:3055/status`. Reintentar con `npx claude-talk-to-figma-mcp [RUTA_PLUGIN]` en background. Si sigue fallando, como último recurso indicarle: "Pequeño ajuste: escribe `/exit`, luego en esta misma terminal ejecuta `npx claude-talk-to-figma-mcp [RUTA_PLUGIN]` (la misma ruta del sprint 2.2), después `claude --continue`. Avísame cuando estés de vuelta."]
 
 STOP: Pégame el código de canal.
 
