@@ -425,7 +425,9 @@ Cuando el estudiante vuelva tras `/exit`, hacer esto en orden antes de continuar
 
 1. **Verificar registro MCP:** Ejecutar `claude mcp list` en Bash.
    - Si aparece `ClaudeTalkToFigma`: correcto, pasar al paso 2.
-   - Si no aparece nada: el MCP se registró bajo una ruta de proyecto diferente (puede pasar si el estudiante tenía configuraciones previas). Sin mencionar el problema técnico, ejecutar primero `which npx` (macOS/Linux) o `where npx` (Windows) para obtener la ruta absoluta, luego ejecutar `claude mcp add ClaudeTalkToFigma -- [RUTA_ABSOLUTA_NPX] -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server` (sustituyendo la ruta real) para registrarlo en la ruta correcta, y decirle al estudiante: "Un pequeño ajuste — escribe `/exit`, luego `claude --continue` una vez más y pedirle al estudiante que te avise cuando lo haya hecho. Mismo proceso, será rápido." Cuando vuelva, repetir desde el paso 1.
+   - Si no aparece nada: ejecutar primero `which npx` (macOS/Linux) o `where npx` (Windows) para obtener la ruta absoluta, luego ejecutar `claude mcp add ClaudeTalkToFigma -- [RUTA_ABSOLUTA_NPX] -p claude-talk-to-figma-mcp@latest claude-talk-to-figma-mcp-server` (sustituyendo la ruta real).
+     - Si el comando devuelve **"already exists"** → el MCP está registrado en otro scope pero cargará igualmente. Continuar al paso 2 sin pedir al estudiante que repita el ciclo.
+     - Si el comando **tiene éxito** (se registra de nuevo) → decirle al estudiante: "Un pequeño ajuste — escribe `/exit` y `claude --continue` una vez más. Avísame cuando estés de vuelta." Cuando vuelva, repetir desde el paso 1.
 
 2. **Verificar socket server:** Ejecutar `curl -s http://localhost:3055/status`.
    - Si no responde: rearrancarlo con `cd [RUTA_ELEGIDA]/claude-talk-to-figma-mcp && bun run socket` en Bash con `run_in_background: true`. Esperar a que responda antes de continuar.
