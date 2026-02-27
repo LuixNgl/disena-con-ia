@@ -4,6 +4,10 @@ Curso práctico y gratuito para **Product Designers** que quieren integrar intel
 
 Aprende a sintetizar research, analizar competencia, crear briefings de diseño y generar propuestas visuales en Figma — todo dirigido por ti y ejecutado con IA.
 
+> 🇬🇧 **Also available in English:** [github.com/LuixNgl/design-with-ai](https://github.com/LuixNgl/design-with-ai)
+>
+> El curso está gestionado por Claude, una IA que puede interactuar en cualquier idioma. La documentación y los materiales del curso, sin embargo, están disponibles en inglés o español.
+
 ---
 
 ## Qué aprenderás
