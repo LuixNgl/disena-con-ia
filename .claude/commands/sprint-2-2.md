@@ -81,7 +81,7 @@ ACTION: Diagnosticar:
 Ahora viene la parte de Figma. Este plugin no está en la tienda de Figma, por eso lo hemos descargado. Importarlo es sencillo:
 
 1. Abre **Figma Desktop** (importante: la app de escritorio, no la web)
-2. Abre o crea cualquier archivo de Figma Design (el menú de plugins solo aparece con un documento abierto)
+2. Asegúrate de tener abierto tu archivo **PeopleOnBoard** del Sprint 2.1 — el menú de plugins solo aparece con un documento abierto
 3. Menú: **Plugins** → **Development** → **Import plugin from manifest...**
 4. Navega hasta la carpeta del plugin y selecciona el archivo (ojo, fíjate bien en la ruta, no uses el primer `manifest.json` que encuentres):
    `[RUTA_ELEGIDA]/claude-talk-to-figma-mcp/src/claude_mcp_plugin/manifest.json`
@@ -125,9 +125,9 @@ claude mcp add ClaudeTalkToFigma -- /ruta/absoluta/npx -p claude-talk-to-figma-m
 
 3. Escribe `claude --continue` para retomar la conversación donde la dejamos
 
-Cuando vuelvas, avísame aquí.
+Cuando hayas ejecutado `claude --continue` y estés de vuelta, avísame aquí.
 
-STOP: ¿Ya estás de vuelta con `claude --continue`?
+STOP: Avísame cuando estés de vuelta con `claude --continue`.
 
 USER: Sí / Listo / De vuelta / [Problema]
 
@@ -161,10 +161,9 @@ ACTION: Diagnosticar:
 
 ### Paso 4: Conectar con Figma
 
-Ahora abre tu archivo **PeopleOnBoard** en Figma (el que creaste en el Sprint 2.1).
+Tu archivo **PeopleOnBoard** debería seguir abierto en Figma. Es posible que todavía tengas a la vista la lista de plugins de desarrollo del Paso 2 — en cualquier caso:
 
-Para ejecutar el plugin:
-1. En Figma: **Plugins** → **Development** → **Claude MCP Plugin** → **Run**
+1. **Plugins** → **Development** → **Claude MCP Plugin** → **Run**
 2. Pulsa **"Connect"** en el panel del plugin si ese botón está activo (normalmente está conectado por defecto)
 3. Aparecerá un **código de canal** (algo como `v4f3uiqq`)
 4. Cópialo y pégamelo aquí
