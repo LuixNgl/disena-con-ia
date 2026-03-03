@@ -299,6 +299,8 @@ Escribe `/bonus_crea-tu-agente` cuando quieras y te guío paso a paso. Puedes ha
 
 Es un regalo extra del curso: configurar tu propio agente ahora es mucho más sencillo porque ya tienes las herramientas instaladas y sabes cómo funcionan.
 
+Por cierto: los comandos de sprint que llevas usando todo el curso son exactamente lo que Anthropic llama [Skills](https://claude.ai/skills). Acaban de unificar el concepto y extenderlo a todas las plataformas. Tu agente puede crear los suyos.
+
 Y no hace falta dejarlo perfecto: tu agente está pensado para mejorar contigo. Si le pides algo para lo que no tiene contexto, él mismo te pedirá la información que necesita.
 
 STOP: Gracias por completar "Diseña con IA". Ahora, a diseñar.

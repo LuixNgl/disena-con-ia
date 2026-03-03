@@ -270,9 +270,20 @@ ACTION: Crear las templates que el estudiante elija. No crear todas, solo las qu
 
 ---
 
-## Sección 6: Comandos personalizados (opcional)
+## Sección 6: Comandos y Skills (opcional)
 
-Ofrecer crear comandos en `.claude/commands/` para tareas frecuentes. Cada comando es un archivo .md con instrucciones para Claude, invocable con `/nombre-comando`.
+Ofrecer crear comandos para tareas frecuentes, invocables con `/nombre`.
+
+Antes de crear, explicar la diferencia brevemente:
+
+> Hay dos opciones:
+> - **Comandos del agente** (`.claude/commands/`): solo funcionan cuando abres esta carpeta en Cursor. Ideales para tareas específicas de este proyecto.
+> - **Skills personales** (`~/.claude/skills/`): funcionan en cualquier carpeta que abras con Claude Code. Ideales para tareas que repites en todos tus proyectos.
+
+ACTION: Preguntar cuál prefiere:
+- Solo en este agente (comandos de proyecto)
+- En todos mis proyectos (Skill personal)
+- Ambas opciones
 
 Ejemplos según el scope:
 - `/stakeholder-update` — Redactar comunicación a stakeholders
@@ -282,9 +293,9 @@ Ejemplos según el scope:
 - `/sintesis-entrevista` — Sintetizar una entrevista de usuario
 - `/test-usuario` — Preparar un test de usabilidad
 
-ACTION: Crear los comandos que el estudiante elija. Cada comando debe tener instrucciones claras para Claude sobre qué hacer, qué preguntar y dónde guardar el resultado.
+ACTION: Crear los comandos o Skills que el estudiante elija. Cada uno debe tener instrucciones claras sobre qué hacer, qué preguntar y dónde guardar el resultado.
 
-[Si no quiere comandos, saltar. Mencionar que puede crearlos después.]
+[Si no quiere, saltar. Mencionar que puede crearlos después.]
 
 ---
 
@@ -324,6 +335,17 @@ Recordar cómo usarlo:
 - Incluir siempre la sección de auto-mejora. Es el mecanismo que hace al agente más útil con el tiempo
 - Respetar el estilo de comunicación que elija el estudiante (tuteo, usted, neutro)
 - Si el estudiante no sabe qué poner, proponer algo basado en lo que has aprendido durante la conversación
+
+### Sobre comandos y Skills
+- **Comandos de proyecto** (`.claude/commands/nombre.md`): archivo .md con las instrucciones. Sin frontmatter necesario.
+- **Skills personales** (`~/.claude/skills/nombre-skill/SKILL.md`): mismo contenido pero en su propia carpeta bajo `~/.claude/skills/`. Añadir frontmatter YAML mínimo:
+  ```yaml
+  ---
+  name: nombre-skill
+  description: Qué hace y cuándo usarlo. Claude lo activa automáticamente si el contexto coincide.
+  ---
+  ```
+- Si el estudiante quiere ambas, crear ambas con el mismo contenido.
 
 ### Sobre la estructura
 - La ubicación se pregunta al estudiante (Sección 2). Por defecto al lado de DisenaConIA, pero respeta su preferencia
